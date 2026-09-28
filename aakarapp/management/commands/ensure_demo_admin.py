@@ -28,13 +28,9 @@ class Command(BaseCommand):
             defaults={"email": email, "is_staff": True, "is_superuser": True},
         )
 
-        if created:
-            user.set_password(password)
-            user.save(update_fields=["password"])
-            self.stdout.write(self.style.SUCCESS(f'Created administrator "{username}".'))
-            return
-
         changed_fields = []
+        user.set_password(password)
+        changed_fields.append("password")
         if user.email != email:
             user.email = email
             changed_fields.append("email")
@@ -44,6 +40,6 @@ class Command(BaseCommand):
         if not user.is_superuser:
             user.is_superuser = True
             changed_fields.append("is_superuser")
-        if changed_fields:
-            user.save(update_fields=changed_fields)
-        self.stdout.write(f'Administrator "{username}" already exists; password unchanged.')
+        user.save(update_fields=changed_fields)
+        action = "Created" if created else "Updated"
+        self.stdout.write(self.style.SUCCESS(f'{action} administrator "{username}".'))
