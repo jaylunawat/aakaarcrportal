@@ -31,10 +31,11 @@ services:
         value: "true"
       - key: DJANGO_SECURE_SSL_REDIRECT
         value: "true"
-      - key: EMAIL_HOST_USER
+      - key: EMAIL_BACKEND
+        value: django.core.mail.backends.console.EmailBackend
+      - key: DJANGO_SUPERUSER_USERNAME
         sync: false
-      - key: EMAIL_HOST_PASSWORD
+      - key: DJANGO_SUPERUSER_EMAIL
         sync: false
-      - key: DEFAULT_FROM_EMAIL
+      - key: DJANGO_SUPERUSER_PASSWORD
         sync: false
-

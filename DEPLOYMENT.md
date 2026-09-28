@@ -27,7 +27,11 @@ The static build intentionally disables forms and omits live leaderboard records
 - start Gunicorn;
 - expose `/healthz` for health checks.
 
-Set the three email variables marked `sync: false` in the Render dashboard before relying on password reset. After deployment, open a Render Shell and run:
+During Blueprint creation, Render asks for the three administrator variables marked `sync: false`. Enter a private username, email, and strong password. The first deployment creates that administrator automatically; the password is never stored in GitHub.
+
+The free demo uses the console email backend because free Render services cannot connect to common SMTP ports. Password-reset email delivery therefore remains disabled in the free demo.
+
+On a paid Render service with Shell access, an additional administrator can also be created with:
 
 ```bash
 python manage.py createsuperuser
@@ -60,4 +64,3 @@ The portal listens on port `8000`. Place the VPS reverse proxy in front of it an
 - Rotate the previously embedded email password and Django secret before deployment.
 - Review `git status` before every push.
 - Keep production backups of PostgreSQL and uploaded media.
-
