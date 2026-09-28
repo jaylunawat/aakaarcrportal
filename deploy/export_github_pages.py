@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+"""Render a privacy-safe static preview into /docs for GitHub Pages."""
+
+import os
+import re
+import shutil
+import sys
+from pathlib import Path
+from urllib.parse import unquote
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(BASE_DIR))
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aakar.settings')
+os.environ.setdefault('DJANGO_DEBUG', 'true')
+
+import django
+
+django.setup()
+
+from django.contrib.auth.models import AnonymousUser
+from django.db.models import Q
+from django.template.loader import render_to_string
+from django.test import RequestFactory
+from django.urls import resolve
+from django.utils import timezone
+
+from aakarapp.models import Task
+
+
+OUTPUT_DIR = BASE_DIR / 'docs'
+APP_STATIC = BASE_DIR / 'aakarapp' / 'static'
+PROJECT_STATIC = BASE_DIR / 'static'
+DEPLOY_DIR = BASE_DIR / 'deploy'
+
+PAGES = (
+    ('home.html', 'cr/', Path('index.html'), {}),
+    (
+        'tasks.html',
+        'cr/tasks',
+        Path('tasks/index.html'),
+        {
+            'tasks': Task.objects.filter(
+                Q(deadline__isnull=True) | Q(deadline__gte=timezone.now())
+            ).order_by('-id'),
+            'completed_tasks': [],
+        },
+    ),
+    ('leaderboard.html', 'cr/leaderboard', Path('leaderboard/index.html'), {'leaderboard_data': []}),
+)
+
+
+def make_request(path):
+    request = RequestFactory().get(f'/{path}')
+    request.user = AnonymousUser()
+    request.resolver_match = resolve(f'/{path}')
+    request.session = {}
+    return request
+
+
+def rewrite_for_static(html, depth):
+    root = './' if depth == 0 else '../' * depth
+
+    html = re.sub(
+        r'<input[^>]+name=["\']csrfmiddlewaretoken["\'][^>]*>',
+        '',
+        html,
+        flags=re.IGNORECASE,
+    )
+    html = html.replace('href="/cr/tasks"', f'href="{root}tasks/"')
+    html = html.replace('href="/cr/leaderboard"', f'href="{root}leaderboard/"')
+    html = html.replace('href="/cr/dashboard"', 'href="#" data-static-only="true"')
+    html = html.replace('href="/cr/logout"', 'href="#" data-static-only="true"')
+    html = html.replace('href="/accounts/password/reset/"', 'href="#" data-static-only="true"')
+    html = html.replace('action="/cr/login"', 'action="#"')
+    html = html.replace('action="/cr/register"', 'action="#"')
+    html = html.replace('action="/cr/tasks"', 'action="#"')
+    html = html.replace('href="/cr/', f'href="{root}')
+    html = html.replace('src="/static/', f'src="{root}static/')
+    html = html.replace('href="/static/', f'href="{root}static/')
+
+    html = html.replace(
+        '</head>',
+        f'    <link rel="stylesheet" href="{root}static/css/static-demo.css">\n</head>',
+    )
+    html = html.replace(
+        '</body>',
+        f'    <script src="{root}static/js/static-demo.js"></script>\n</body>',
+    )
+    return html
+
+
+def referenced_static_assets(rendered_pages):
+    paths = set()
+    pattern = re.compile(r'(?:src|href)=["\'](?:\.\./|\./)*static/([^"\'?]+)')
+    for html in rendered_pages:
+        paths.update(unquote(match) for match in pattern.findall(html))
+    return paths
+
+
+def copy_asset(relative_path):
+    if '..' in Path(relative_path).parts:
+        raise ValueError(f'Unsafe static path: {relative_path}')
+    destination = OUTPUT_DIR / 'static' / relative_path
+    for source_root in (APP_STATIC, PROJECT_STATIC):
+        source = source_root / relative_path
+        if source.is_file():
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+            return
+    raise FileNotFoundError(f'Static asset not found: {relative_path}')
+
+
+def main():
+    if OUTPUT_DIR.exists():
+        shutil.rmtree(OUTPUT_DIR)
+    OUTPUT_DIR.mkdir(parents=True)
+
+    rendered_pages = []
+    for template, request_path, output_path, context in PAGES:
+        request = make_request(request_path)
+        html = render_to_string(template, context=context, request=request)
+        html = rewrite_for_static(html, len(output_path.parts) - 1)
+        destination = OUTPUT_DIR / output_path
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(html, encoding='utf-8')
+        rendered_pages.append(html)
+
+    (OUTPUT_DIR / 'static/css').mkdir(parents=True, exist_ok=True)
+    (OUTPUT_DIR / 'static/js').mkdir(parents=True, exist_ok=True)
+    shutil.copy2(DEPLOY_DIR / 'static-demo.css', OUTPUT_DIR / 'static/css/static-demo.css')
+    shutil.copy2(DEPLOY_DIR / 'static-demo.js', OUTPUT_DIR / 'static/js/static-demo.js')
+
+    for asset in referenced_static_assets(rendered_pages):
+        if asset in {'css/static-demo.css', 'js/static-demo.js'}:
+            continue
+        copy_asset(asset)
+
+    (OUTPUT_DIR / '.nojekyll').write_text('', encoding='utf-8')
+    shutil.copy2(OUTPUT_DIR / 'index.html', OUTPUT_DIR / '404.html')
+    (OUTPUT_DIR / 'README.md').write_text(
+        '# Aakaar CR static preview\n\n'
+        'This directory is generated by `deploy/export_github_pages.py`.\n'
+        'Publish the `/docs` folder from the repository settings in GitHub Pages.\n'
+        'Authentication, submissions, password reset, and live leaderboard data are intentionally disabled.\n',
+        encoding='utf-8',
+    )
+    print(f'Exported {len(PAGES)} pages and {len(referenced_static_assets(rendered_pages))} referenced assets to {OUTPUT_DIR}')
+
+
+if __name__ == '__main__':
+    main()

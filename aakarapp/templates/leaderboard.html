@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Leaderboard — Aakaar CR Program{% endblock %}
+
+{% block content %}
+<div class="leaderboard-shell">
+    <div class="page-intro"><div><h1>Who is<br><span class="gradient-text">moving up?</span></h1><p class="section-copy mb-0 mt-4">See the CRs turning curiosity into momentum. Scores are calculated from graded submissions.</p></div><a class="btn btn-primary" href="{% url 'tasks_page' %}">Earn points <i class="bi bi-arrow-up-right ms-1"></i></a></div>
+    <section class="glass-panel leaderboard-card"><div class="table-responsive"><table class="table leaderboard-table"><thead><tr><th>Rank</th><th>Participant</th><th class="text-end">Points</th></tr></thead><tbody>{% for data in leaderboard_data %}<tr><td class="rank">#{{ forloop.counter|stringformat:"02d" }}</td><td><div class="participant-name">{{ data.name }}</div><div class="participant-college">{{ data.college }}</div></td><td class="text-end leader-points">{{ data.score }}</td></tr>{% empty %}<tr><td colspan="3" class="text-center py-5"><i class="bi bi-bar-chart display-6 text-muted d-block mb-3"></i><p class="mb-0">Revealing soon.</p></td></tr>{% endfor %}</tbody></table></div></section>
+</div>
+{% endblock %}

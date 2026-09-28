@@ -1,0 +1,1775 @@
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+    </script>
+  <title>CR Program - Aakaar | IIT Bombay</title>
+ 
+ <link href="/static/css/home.css" rel="stylesheet" />
+
+
+    <!-- Fevicon  -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+<style>
+    h2 {
+    text-align:center;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 20px 0;
+    grid-gap: 20px;
+    font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+'Segoe UI'
+Roboto
+'Helvetica Neue'
+Arial
+'Noto Sans'
+sans-serif
+'Apple Color Emoji'
+'Segoe UI Emoji'
+'Segoe UI Symbol'
+'Noto Color Emoji'
+    }
+    
+    h2:after,h2:before {
+    content: " ";
+    margin: 1em 0 0.5em 0;
+    position: relative;
+    text-shadow: 0 -1px rgba(0,0,0,0.6);
+    font-size: 28px;
+    line-height: 40px;
+    background: #355681;
+    background: rgba(53,86,129, 0.8);
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0 10px 0 10px;
+    box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+
+
+    font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+'Segoe UI'
+Roboto
+'Helvetica Neue'
+Arial
+'Noto Sans'
+sans-serif
+'Apple Color Emoji'
+'Segoe UI Emoji'
+'Segoe UI Symbol'
+'Noto Color Emoji'
+    }
+    .section-title {
+    padding-bottom: 30px;
+}
+.g-6,
+.gx-6 {
+  --bs-gutter-x: 4.5rem;
+}
+.g-6,
+.gy-6 {
+  --bs-gutter-y: 4.5rem;
+}
+
+.display-4 {
+  text-shadow: 4px 4px 0px #2f9aea;
+  animation: fadeIn 2.5s linear forwards;
+}
+
+@media (min-width: 576px) {
+  .g-sm-6,
+  .gx-sm-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-sm-6,
+  .gy-sm-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .g-md-6,
+  .gx-md-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-md-6,
+  .gy-md-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .g-lg-6,
+  .gx-lg-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-lg-6,
+  .gy-lg-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .g-xl-6,
+  .gx-xl-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  
+  .g-xl-6,
+  .gy-xl-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 1400px) {
+  .g-xxl-6,
+  .gx-xxl-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-xxl-6,
+  .gy-xxl-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+.mb-6 {
+  margin-bottom: 4.5rem !important;
+}
+.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+.w-100px {
+  width: 100px !important;
+}
+.h-100px {
+  height: 100px !important;
+}
+@media (min-width: 576px) {
+  .mb-sm-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-sm-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 768px) {
+  .mb-md-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-md-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .mb-lg-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-lg-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  .mb-xl-6 {
+    margin-bottom: 4.5rem !important;
+    margin-left: -40px ; 
+    margin-right: 40px;
+  }
+  .py-xl-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+    
+  }
+}
+@media (min-width: 1400px) {
+  .mb-xxl-6 {
+    margin-bottom: 4.5rem !important;
+    margin-left: -40px; margin-right: 40px;
+  }
+  .py-xxl-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+    
+  }
+}
+#demo{
+    background: linear-gradient(112deg, #ffffff 50%, #eaeef2 50%);
+    border-radius: 7px;
+    max-width: 900px;
+    margin: auto;
+}
+.carousel-caption {
+    position: initial;
+    z-index: 10;
+    padding: 5rem 8rem;
+    color: #000000;
+    font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+'Segoe UI'
+Roboto
+'Helvetica Neue'
+Arial
+'Noto Sans'
+sans-serif
+'Apple Color Emoji'
+'Segoe UI Emoji'
+'Segoe UI Symbol'
+'Noto Color Emoji';
+    text-align: center;
+    font-size: 1.2rem;
+    /* font-style: italic; */
+    font-weight: 500;
+    line-height: 2rem;
+}
+@media(max-width:767px){
+    .carousel-caption {
+        position: initial;
+        z-index: 10;
+        padding: 3rem 2rem;
+        color: #000000;
+        text-align: center;
+        font-size: 0.8rem;
+        /* font-style: italic; */
+        font-weight: 500;
+        line-height: 1.5rem;
+    }
+}
+.carousel-caption img{
+    width: 25%;
+    height: 150px;
+    border-radius: 5rem;
+    margin-top: 2rem;
+}
+@media(max-width:767px){
+    .carousel-caption img{
+        width: 25%;
+        height: 80px;
+        border-radius: 4rem;
+        margin-top: 1rem;
+    }
+    .display-6{
+  font-size:20px;
+}
+
+.size-change{
+  font-size:18px;
+}
+
+}
+#image-caption{
+    font-style: normal;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+@media(max-width:767px){
+    #image-caption{
+        font-style: normal;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+}
+i{
+    background-color: #355681;
+    padding: 1.4rem;
+    border-radius: 7px;
+}
+@media(max-width:767px){
+    i{
+        padding: 0.8rem;
+    }
+}
+.carousel-control-prev{
+    justify-content: flex-start;
+}
+
+.carousel-control-next {
+    justify-content: flex-end;
+}
+.carousel-control-prev,.carousel-control-next{
+    transition: none;
+    opacity: unset;
+}
+.accordion-section .panel-default > .panel-heading {
+    border: 0;
+    border-radius: 7px;
+    background: #eaeef2;
+    padding: 0;
+}
+.accordion-section .panel-default .panel-title a {
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    'Segoe UI'
+    Roboto
+    'Helvetica Neue'
+    Arial
+    'Noto Sans'
+    sans-serif
+    'Apple Color Emoji'
+    'Segoe UI Emoji'
+    'Segoe UI Symbol'
+    'Noto Color Emoji' ;
+       font-size: 1.1rem;
+    color: #000000;
+}
+.accordion-section .panel-default .panel-title a:after {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    content: "\f106";
+    color: #355681;
+    float: right;
+    margin-top: 5px;
+    /* position: relative; */
+}
+.accordion-section .panel-default .panel-title a.collapsed:after {
+    content: "\f107";
+}
+.accordion-section .panel-default .panel-body {
+    font-size: 1.2rem;
+    font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    'Segoe UI'
+    Roboto
+    'Helvetica Neue'
+    Arial
+    'Noto Sans'
+    sans-serif
+    'Apple Color Emoji'
+    'Segoe UI Emoji'
+    'Segoe UI Symbol'
+    'Noto Color Emoji'    
+
+
+}
+
+.display-4 {
+  text-shadow: 2px 2px 0px #2f9aea;
+  animation: fadeIn 2.5s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0
+  }
+
+  100% {
+      opacity: 1;
+  }
+
+}
+</style>
+
+</head>
+
+<body style="background-color:#F8F9FA; line-height: 1.3;">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-top: 0px; margin-top: -10px;">
+    <div class="container"><a href="/cr"> <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/logo.png" width="150px" /></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="#about" class="nav-link" style="font-size: 18px; color:black"> About </a>
+          </li>
+          <li class="nav-item active"><a href="#responsibilty" class="nav-link" style="font-size: 18px; color:black">
+              Responsibilities </a></li>
+          <li class="nav-item active"><a href="#incentive" class="nav-link" style="font-size: 18px; color:black">
+              Incentives </a></li>
+          <li class="nav-item active"><a href="#testinomial" class="nav-link" style="font-size: 18px; color:black">
+              Testimonials</a></li>
+          <li class="nav-item active"><a href="#faq" class="nav-link" style="font-size: 18px; color:black"> FAQ </a>
+          </li>
+          <li class="nav-item active"><a href="#team" class="nav-link" style="font-size: 18px; color:black"> Contact</a>
+          </li>
+        </ul>
+        <!-- <button type="button" class="btn" style="background-color: #355681; font-weight: 600;">REGISTER</button> -->
+        
+        <a class="btn" style="background-color: #355681; font-weight: 600; color: rgb(236, 229, 229);" href="/cr/accounts/google/login/">Login</a>
+        
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- ############################################# -->
+
+
+
+
+
+  <!-- <div style="background: url(https://bootstrapious.com/i/snippets/sn-static-header/background.jpg)" class="jumbotron bg-cover text-white" style="min-height: 500vh; height: 500px;">
+  <div class="container py-5 text-center">
+      <h1 class="display-4 font-weight-bold">Bootstrap static header</h1>
+      <p class="font-italic mb-0">Using simple jumbotron-style component, create a nice Bootstrap 4 header with a background image.</p>
+      <p class="font-italic">Snippe by
+          <a href="https://bootstrapious.com" class="text-white">
+              <u>Bootstrapious</u>
+          </a>
+      </p>
+      <a href="#" role="button" class="btn btn-primary px-5">See All Features</a>
+  </div>
+</div> -->
+  <div class="bg-light">
+    <div class="container py-5">
+      <div class="row h-100 align-items-center py-5">
+        <div class="col-lg-6">
+          <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          'Segoe UI'
+          Roboto
+          'Helvetica Neue'
+          Arial
+          'Noto Sans'
+          sans-serif
+          'Apple Color Emoji'
+          'Segoe UI Emoji'
+          'Segoe UI Symbol'
+          'Noto Color Emoji'; font-weight: bold;">Welcome to Aakaar&#39;s</h3>
+          <p class="display-4" style="font-weight: bold;">COLLEGE</p>
+          <p class="display-4" style=" margin-top: -20px; font-weight: bold;">REPRESENTATIVE</p>
+          <p class="display-4" style=" margin-top: -20px; font-weight: bold;">PROGRAM</p>
+          
+          <a class="btn btn-lg" style="background-color: #355681; font-weight: 600; color: rgb(236, 229, 229); margin-top:10px;" href="/accounts/google/login/">Register</a>
+                  </div>
+        <div class="col-lg-6 d-none d-lg-block"><img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/bg.png" alt="" class="img-fluid" /></div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ########################################################################### -->
+
+
+
+
+
+  <section class="features" id="about" style="padding-top: 50px;">
+    <div class="container">
+      <div class="section-title ">
+        <h2>ABOUT AAKAAR</h2>
+        <p style="font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+&#39;Segoe UI&#39;
+Roboto
+&#39;Helvetica Neue&#39;
+Arial
+&#39;Noto Sans&#39;
+sans-serif
+&#39;Apple Color Emoji&#39;
+&#39;Segoe UI Emoji&#39;
+&#39;Segoe UI Symbol&#39;
+&#39;Noto Color Emoji&#39;; font-size: 20px; color: black;"><span class="size-change">Aakaar is the annual festival of the Department of Civil
+          Engineering, IIT Bombay comprising a range of engaging competitions, workshops, lecture series, panel
+          discussions, industrial talks, exhibitions, and various entertaining learning events. Since its inception in
+          2009, it has become Asia’s largest Departmental College festival. Aakaar serves as a forum for discussion and
+          offers opportunities for developing new skills for engineering students across India.</span></p>
+      </div>
+      <div class="row aos-init aos-animate" data-aos="fade-up">
+        <div class="col-md-5 order-1 order-md-2" style="padding-top: 90px"> <img src="https://bootstrapmade.com/demo/templates/Moderna/assets/img/features-1.svg" class="img-fluid" alt="" />
+        </div>
+        <div class="col-md-7 order-2 order-md-1 section-aakaar section-title" style="margin-top: 50px;">
+          <h2>CR PROGRAM</h2>
+          <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 20px; color: black;"><span class="size-change"
+          >The College Representative Program is the core of Aakaar’s outreach initiative. We at Aakaar hope to connect with college students across India to pique their interest in Civil Engineering and provide a platform to pursue the same. 
+ <br /> <br /> This Program enables you to create a strong network of like-minded people who can support your future professional pursuits while gaining invaluable experience, organising unique events, and putting on spectacular events.</span>
+</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ############################################################################################# -->
+
+
+  <section style="margin:50px 0px ;">
+    <div class="container overflow-hidden">
+      <div class="row gy-5 gy-md-6 gy-lg-0">
+        <div class="col-4 col-lg-4">
+          <div class="text-center">
+            <div class="d-flex align-items-center justify-content-center rounded-circle w-100px h-100px mb-3 mx-auto" style="background-color: #355681;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-activity text-white" viewBox="0 0 16 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+              </svg>
+            </div>
+            <h5 class="display-6 fw-bold m-1" style="font-weight: bolder;">1200+</h5>
+            <p class="text m-0" style="font-weight: 600;">Colleges</p>
+          </div>
+        </div>
+        <div class="col-4 col-lg-4">
+          <div class="text-center">
+            <div class="d-flex align-items-center justify-content-center rounded-circle w-100px h-100px mb-3 mx-auto" style="background-color: #355681;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-people text-white" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"></path>
+              </svg>
+            </div>
+            <h5 class="display-6 fw-bold m-1" style="font-weight: bolder;">8000+</h5>
+            <p class="text m-0" style="font-weight: 600;">Class Representatives</p>
+          </div>
+        </div>
+        <div class="col-4 col-lg-3">
+          <div class="text-center">
+            <div class="d-flex align-items-center justify-content-center rounded-circle w-100px h-100px mb-3 mx-auto" style="background-color: #355681;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-award text-white" viewBox="0 0 16 16">
+                <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"></path>
+                <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"></path>
+              </svg>
+            </div>
+            <h5 class="display-6 fw-bold m-1" style="font-weight: bolder;">5 lakhs+</h5>
+            <p class="text m-0" style="font-weight: 600;">Active Engagement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ###################################################################################### -->
+
+  <section style="margin:50px 0px 25px 0px;" id="responsibilty">
+
+    <div class="container">
+      <h2 class="section-res" style="font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    &#39;Segoe UI&#39;
+    Roboto
+    &#39;Helvetica Neue&#39;
+    Arial
+    &#39;Noto Sans&#39;
+    sans-serif
+    &#39;Apple Color Emoji&#39;
+    &#39;Segoe UI Emoji&#39;
+    &#39;Segoe UI Symbol&#39;
+    &#39;Noto Color Emoji&#39;">RESPONSIBILITIES</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+        <div class="col d-flex align-items-start">
+          <div class="icon-square text d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#355681" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Be a face</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Become the representative of Aakaar in your college and serve as a link
+              between the students there and Aakaar.</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#355681" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs">
+              <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+              <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Be a Leader</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Engage with the student bodies, talk to higher authorities to organise
+              events in your college</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#355681" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs">
+              <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
+              <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Be a Pioneer</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Plan and try out creative marketing and PR techniques to increase
+              student engagement.</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#355681" stroke-width="3" stroke-linecap="square" stroke-linejoin="arcs">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <rect x="9" y="9" width="6" height="6"></rect>
+              <line x1="9" y1="1" x2="9" y2="4"></line>
+              <line x1="15" y1="1" x2="15" y2="4"></line>
+              <line x1="9" y1="20" x2="9" y2="23"></line>
+              <line x1="15" y1="20" x2="15" y2="23"></line>
+              <line x1="20" y1="9" x2="23" y2="9"></line>
+              <line x1="20" y1="14" x2="23" y2="14"></line>
+              <line x1="1" y1="9" x2="4" y2="9"></line>
+              <line x1="1" y1="14" x2="4" y2="14"></line>
+            </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Be a Brainstorm</h3>
+            <p style="font-family: ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Talk with other CRs and Aakaar coordinators to brainstorm fresh ideas
+              for the festival</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ################################################################################# -->
+
+
+<section style="padding-top: 1px; padding-bottom: 3px;">
+  <div class="container">
+    <h2 class="section-res" style="font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    &#39;Segoe UI&#39;
+    Roboto
+    &#39;Helvetica Neue&#39;
+    Arial
+    &#39;Noto Sans&#39;
+    sans-serif
+    &#39;Apple Color Emoji&#39;
+    &#39;Segoe UI Emoji&#39;
+    &#39;Segoe UI Symbol&#39;
+    &#39;Noto Color Emoji&#39;">BENEFITS</h2>
+    <div class="my-3 p-3">
+      <!-- <h6 class="border-bottom pb-2 mb-0">Recent updates</h6> -->
+      <div class="d-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#355681" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+          <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"></path>
+          <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"></path>
+        </svg>   
+        <div class="pb-3 mb-0 small lh-sm">
+          <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Personalised Dashboard</h3>
+          <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;"> 
+          Access to the CA Dashboard, a one-stop solution for all engagement b/w CRs and Aakaar 
+          </p>      
+        </div>
+      </div>
+      <div class="d-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#355681" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+          <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"></path>
+          <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"></path>
+        </svg>   
+        <div class="pb-3 mb-0 small lh-sm">
+          <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Exclusive Merchandise</h3>
+          <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;"> 
+Continued evaluation based on the tasks given, with merchandise to the scoring CRs          </p>      
+        </div>
+      </div>
+      <div class="d-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#355681" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+          <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"></path>
+          <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"></path>
+        </svg>   
+        <div class="pb-3 mb-0 small lh-sm">
+          <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Organise Events</h3>
+          <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;"> 
+Ideate, Plan and Execute events in your college, and get a chance to become a part of the organising team in the main fest          </p>      
+        </div>      </div>
+      <div class="d-flex">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#355681" class="bi bi-bookmarks-fill" viewBox="0 0 16 16">
+          <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5V4z"></path>
+          <path d="M4.268 1A2 2 0 0 1 6 0h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L13 13.768V2a1 1 0 0 0-1-1H4.268z"></path>
+        </svg>  
+        <div class="pb-3 mb-0 small lh-sm">
+          <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Skill Development</h3>
+          <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;"> 
+Free courses/coupons and internship opportunities for skill growth of the CRs          </p>      
+        </div> </div>
+    </div>
+  </div>
+</section>
+
+  <!--############################################  -->
+
+
+  <section style="padding-top: 20px;" id="incentive">
+
+    <div class="container">
+      <h2 class="section-res" style="font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    &#39;Segoe UI&#39;
+    Roboto
+    &#39;Helvetica Neue&#39;
+    Arial
+    &#39;Noto Sans&#39;
+    sans-serif
+    &#39;Apple Color Emoji&#39;
+    &#39;Segoe UI Emoji&#39;
+    &#39;Segoe UI Symbol&#39;
+    &#39;Noto Color Emoji&#39;">INCENTIVES</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-4">
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#355681" class="bi bi-award" viewBox="0 0 16 16">
+            <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"></path>
+            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"></path>
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">LOR</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Top performing CRs will get a Letter of Recommendation from Aakaar, IIT
+            Bombay</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-trophy-fill" viewBox="0 0 16 16">
+            <path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935z"></path>
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Certificate</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Will get a Certificate of Internship upon satisfying the minimum criteria</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-instagram" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Shoutouts</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Monthly shoutout to top 5 CRs from the official Instagram page of Aakaar</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+            <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"></path>
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Merchandise</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Exclusive personal merchandise to Top monthly CRs</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square text d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-gift-fill" viewBox="0 0 16 16">
+            <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7h6zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9H2.5z"></path>
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Exciting Gifts</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Hoodies and exciting gifts to overall top performing CRs.</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-calendar-event-fill" viewBox="0 0 16 16">
+            <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-3.5-7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5z"></path>
+          </svg>
+          </div>
+          <div>
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Attend Events</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Chance to attend events/workshop during the tenure.</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Free Workshops</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Free Paid Workshops in main event for top CRs</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
+          </svg>
+          </div>
+          <div>
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Accomodation</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Free accommodation inside IIT Bombay during the main fest for top
+            performing CRs</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-mic-fill" viewBox="0 0 16 16">
+              <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+              <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/> 
+          </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Professional talks</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Chance to meet with the Aakaar team and professors</p>
+
+          </div>
+        </div>
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-person-video3" viewBox="0 0 16 16">
+            <path d="M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2Z"></path>
+            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783.059-.187.09-.386.09-.593V4a2 2 0 0 0-2-2H2Z"></path>
+          </svg>
+          </div>
+        
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 25px;">Corporate lunch</h3>
+            <p style="font-family:
+          ui-sans-serif
+          system-ui
+          -apple-system
+          BlinkMacSystemFont
+          &#39;Segoe UI&#39;
+          Roboto
+          &#39;Helvetica Neue&#39;
+          Arial
+          &#39;Noto Sans&#39;
+          sans-serif
+          &#39;Apple Color Emoji&#39;
+          &#39;Segoe UI Emoji&#39;
+          &#39;Segoe UI Symbol&#39;
+          &#39;Noto Color Emoji&#39;; font-size: 18px;">Opportunity to meet with industrialists and have lunch with them</p>
+
+          </div>
+        </div>
+
+ 
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16">
+              <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+              <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"/>
+            </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+                  ui-sans-serif
+                  system-ui
+                  -apple-system
+                  BlinkMacSystemFont
+                  &#39;Segoe UI&#39;
+                  Roboto
+                  &#39;Helvetica Neue&#39;
+                  Arial
+                  &#39;Noto Sans&#39;
+                  sans-serif
+                  &#39;Apple Color Emoji&#39;
+                  &#39;Segoe UI Emoji&#39;
+                  &#39;Segoe UI Symbol&#39;
+                  &#39;Noto Color Emoji&#39;; font-size: 25px;">Lab Visits</h3>
+            <p style="font-family:
+                  ui-sans-serif
+                  system-ui
+                  -apple-system
+                  BlinkMacSystemFont
+                  &#39;Segoe UI&#39;
+                  Roboto
+                  &#39;Helvetica Neue&#39;
+                  Arial
+                  &#39;Noto Sans&#39;
+                  sans-serif
+                  &#39;Apple Color Emoji&#39;
+                  &#39;Segoe UI Emoji&#39;
+                  &#39;Segoe UI Symbol&#39;
+                  &#39;Noto Color Emoji&#39;; font-size: 18px;">Tour of Research backed Labs of Civil Department</p>
+        
+          </div>
+        </div>
+
+        <div class="col d-flex align-items-start" style="border-radius: 10px; padding-top: 15px; border-left: 2px solid #355681;">
+          <div class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#355681" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+              <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+              <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+            </svg>
+          </div>
+          <div style=" border-radius: 5px;">
+            <h3 style="font-family:
+                  ui-sans-serif
+                  system-ui
+                  -apple-system
+                  BlinkMacSystemFont
+                  &#39;Segoe UI&#39;
+                  Roboto
+                  &#39;Helvetica Neue&#39;
+                  Arial
+                  &#39;Noto Sans&#39;
+                  sans-serif
+                  &#39;Apple Color Emoji&#39;
+                  &#39;Segoe UI Emoji&#39;
+                  &#39;Segoe UI Symbol&#39;
+                  &#39;Noto Color Emoji&#39;; font-size: 25px;">Skill Endorsement</h3>
+            <p style="font-family:
+                  ui-sans-serif
+                  system-ui
+                  -apple-system
+                  BlinkMacSystemFont
+                  &#39;Segoe UI&#39;
+                  Roboto
+                  &#39;Helvetica Neue&#39;
+                  Arial
+                  &#39;Noto Sans&#39;
+                  sans-serif
+                  &#39;Apple Color Emoji&#39;
+                  &#39;Segoe UI Emoji&#39;
+                  &#39;Segoe UI Symbol&#39;
+                  &#39;Noto Color Emoji&#39;; font-size: 18px;">Endorsing CRs skills on the linkedin to recognize their work</p>
+        
+          </div>
+        </div>
+        
+       </div>
+    </div>
+  </section>
+
+
+
+  <!-- ##################################################### -->
+
+ 
+
+  <section style="padding-top: 5px;" id="testinomial">
+
+    <div class="container">
+      <h2 style="font-family:
+  ui-sans-serif
+  system-ui
+  -apple-system
+  BlinkMacSystemFont
+  &#39;Segoe UI&#39;
+  Roboto
+  &#39;Helvetica Neue&#39;
+  Arial
+  &#39;Noto Sans&#39;
+  sans-serif
+  &#39;Apple Color Emoji&#39;
+  &#39;Segoe UI Emoji&#39;
+  &#39;Segoe UI Symbol&#39;
+  &#39;Noto Color Emoji&#39;;">TESTIMONIALS</h2>
+
+      <div id="demo" class="carousel slide pointer-event" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active carousel-item-left">
+            <div class="carousel-caption">
+              <p>During my internship, I learned how to communicate and build networks with people. After Completion of the program, I also received LOR. Students eager to gain new skills and want to demonstrate their leadership qualities should consider this internship.
+              </p>
+              <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/Nazir.jpg" width="100px" height="100px" />
+              <div id="image-caption">Inzamam Nazir</div>
+              <span style="margin-bottom: 0px; color:rgba(53,86,129, 0.8); "><p>Rank 1</p></span>
+              <p>DR B.C ROY ENGINEERING COLLEGE, DURGAPUR </p>
+            </div>
+          </div>
+          <div class="carousel-item carousel-item-next carousel-item-left">
+            <div class="carousel-caption">
+              <p>I enjoyed &amp; learned a lot in this internship and improved my leadership and communication skills. The experience as a Campus Representative Intern was mind-blowing; one gets to know many things from the team.</p>
+              <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/Saravana.jpg" width="100px" height="100px" />
+              <div id="image-caption">G. Saravana Kumar</div>
+              <span style="margin-bottom: 0px; color:rgba(53,86,129, 0.8); "><p>Rank 2</p></span>
+              <p>Velammal College of Engineering and Technology, Madurai</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-caption">
+              <p>Thank you, Aakaar for giving me this fantastic opportunity. Showcasing my management skills got much better by being a part. I was lucky to be a part of various events and workshops conducted by the Aakaar. The tenure was significant both at the personal level and at the corporate level. 
+              </p>
+              <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/Sarfaraz.jpg" width="100px" height="100px" />
+              <div id="image-caption">Sarfaraz Ahmad</div>
+              <span style="margin-bottom: 0px; color:rgba(53,86,129, 0.8); "><p>Rank 4</p></span>
+              <p>Future Institute of Engineering and Management, Kolkata</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-caption">
+              <p>Overall it was a wonderful experience. I learned various skills and worked on them throughout the process. Aakaar provides a unique work experience, and as a part of being a top CAs, I received goodies too. Looking forward to getting an opportunity to be a part of it again.
+              </p>
+              <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/Radhika.jpeg" width="100px" height="100px" />
+              <div id="image-caption">Radhika Agarwal</div>
+              <span style="margin-bottom: 0px; color:rgba(53,86,129, 0.8); "><p>Rank 9</p></span>
+              <p>Glbajaj group of Institute, Mathura</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="carousel-caption">
+              <p>This internship helped me to build skills in various domains like Marketing, Networking, Management, and Leadership. It will prepare you for the upcoming corporate environment by providing the best experience. Kudos to team Aakaar for the smooth management of this internship program.
+              </p>
+              <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/Premveer.png" width="100px" height="100px" />
+              <div id="image-caption">Premveer Singh</div>
+              <span style="margin-bottom: 0px; color:rgba(53,86,129, 0.8); "><p>Rank 29</p></span>
+              <p>Indian Institute of Technology Jammu</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <i class="bi bi-arrow-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <!-- ############################################################### -->
+
+
+
+  <section class="accordion-section clearfix mt-3" aria-label="Question Accordions" style="padding-top: 5px;" id="faq">
+    <div class="container">
+
+      <h2 style = "margin: 50px 0px;">Frequently Asked Questions </h2>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-top: 15px;">
+        <div class="panel panel-default">
+          <div class="panel-heading p-3 mb-3" role="tab" id="heading0">
+            <h3 class="panel-title">
+              <a class="collapsed" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0">
+                What does it mean to be a College Representative?
+              </a>
+            </h3>
+          </div>
+          <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
+            <div class="panel-body px-3 mb-4">
+              <p>As a College Representative, you will be the face of Aakaar in your institute. You will be the first
+                point of contact for any student who requires information about Aakaar, and you
+                will be assisting them as and when needed.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading p-3 mb-3" role="tab" id="heading1">
+            <h3 class="panel-title">
+              <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                What are the eligibility requirements for joining the program?
+              </a>
+            </h3>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
+            <div class="panel-body px-3 mb-4">
+              <p>Students from engineering college with any degree, having civil engineering as branch in their college can register for the CR program.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading p-3 mb-3" role="tab" id="heading2">
+            <h3 class="panel-title">
+              <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                How can I register for the College Representative program?
+              </a>
+            </h3>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body px-3 mb-4">
+              <p>You need to click on the Login button at the top of the website for registration. You will be redirected to CR Dashboard in which further updates will be given. 
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading p-3 mb-3" role="tab" id="heading2">
+            <h3 class="panel-title">
+              <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                What is the duration of CR Program?
+              </a>
+            </h3>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+            <div class="panel-body px-3 mb-4">
+              <p>The Program will lasts till the main fest in March i.e. 5 months.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading p-3 mb-3" role="tab" id="heading3">
+            <h3 class="panel-title">
+              <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                How much time and effort do I need to invest?
+              </a>
+            </h3>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+            <div class="panel-body px-3 mb-4">
+              <p>On average, you are expected to put in 1-2 hours per week. Maintaining devotion and honesty toward the tasks given to you is crucial.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading p-3 mb-3" role="tab" id="heading4">
+            <h3 class="panel-title">
+              <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse3">
+                How will I receive updates about tasks?
+              </a>
+            </h3>
+          </div>
+          <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+            <div class="panel-body px-3 mb-4">
+              <p>You will be informed about tasks through CR dashboard and social media handles as well as
+                Whatsapp/Telegram groups.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ############################################################################# -->
+
+
+  <section class="page-section" id="team">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-heading text-uppercase" style="margin-top: 50px;">CONTACT US</h2>
+        <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
+      </div>
+      <div class="row">
+        <div class="col-lg-6 text-center">
+          <div class="team-member" style="margin-top: 20px;">
+            <img class="mx-auto rounded-circle" src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/akshat_1.jpeg" width="240px" height="240px" alt="..." style="border-bottom: 5px solid #355681; object-fit: cover;" />
+            <h4>Akshat Jain</h4>
+            <p class="text-muted">Media and Publicity Manager</p>
+            <a class="btn btn-social mx-2" href="tel:8850192171"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+            </svg></a>
+            <a class="btn  btn-social mx-2" href="https://www.facebook.com/akshat1jain"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+              </svg></a>
+            <a class="btn btn-social mx-2" href="https://www.linkedin.com/in/akshat-jain-03809a1ba/"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-linkedin" viewBox="0 0 16 16">
+                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+              </svg></a>
+              <a class="btn btn-social mx-2" href="https://www.instagram.com/akshatjain900/"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-instagram" viewBox="0 0 16 16">
+                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                </svg></a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 text-center">
+          <div class="team-member" style="margin-top: 20px;">
+            <img class="mx-auto rounded-circle" src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/Dinesh_1.jpg" width="240px" height="240px"
+              alt="..." style="border-bottom: 5px solid #355681; object-fit: cover;">
+            <h4>Dinesh Kumar</h4>
+            <p class="text-muted">Media and Publicity Manager</p>
+            <a class="btn btn-social mx-2" href="tel:9930010740"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
+            </svg></a>
+            <a class="btn  btn-social mx-2" href="https://www.facebook.com/dinesh.chahar.96742"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+              </svg></a>
+            <a class="btn btn-social mx-2" href="https://www.linkedin.com/in/dinesh-kumar-68b779239/"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-linkedin" viewBox="0 0 16 16">
+                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+              </svg></a>
+              <a class="btn btn-social mx-2" href="https://www.instagram.com/dineshchahar2003/"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#355681" class="bi bi-instagram" viewBox="0 0 16 16">
+                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                </svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- #################################################################### -->
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top container">
+    <div class="col-md-4 d-flex align-items-center">
+      <span class="mb-3 mb-md-0 text-muted">© Aakaar, IIT Bombay 2022-23</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3" style="padding-right: 10px;"><a class="text-muted" href="https://twitter.com/aakaariitb"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-twitter" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+          </svg></a></li>
+      <li class="ms-3" style="padding-right: 10px;"><a class="text-muted" href="https://www.instagram.com/aakaar_iitbombay/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+            </svg></a></li>
+      <li class="ms-3" style="padding-right: 5px;"><a class="text-muted" href="https://www.facebook.com/AakaariitBombay"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+          </svg></a></li>
+      <li class="ms-3" style="padding-right: 5px;"><a class="text-muted" href="https://www.linkedin.com/company/aakaariitb/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-linkedin" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+          </svg></a></li>
+    </ul> 
+</footer>
+
+
+</body></html>

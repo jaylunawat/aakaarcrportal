@@ -1,0 +1,37 @@
+# Environment and credentials
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.coverage
+htmlcov/
+venv/
+.venv/
+
+# Django runtime data (never publish these)
+db.sqlite3
+db.sqlite3-*
+media/
+staticfiles/
+*.log
+
+# Backups and data exports
+*.zip
+*.sqlite
+*.sqlite3
+backup.json
+*.csv
+*.save
+*.save.*
+folder_structure.txt
+
+# Editor / OS files
+.DS_Store
+.idea/
+.vscode/
+

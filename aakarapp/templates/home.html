@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Aakaar CR Program — Represent what moves you{% endblock %}
+
+{% block content %}
+{% if messages %}<div class="position-fixed top-0 end-0 p-3" style="z-index:1100; margin-top:78px;">{% for message in messages %}<div class="alert alert-{{ message.tags }} shadow-sm">{{ message }}</div>{% endfor %}</div>{% endif %}
+
+<section class="home-hero">
+    <div class="hero-copy">
+        <h1 class="display-title mt-4">Make your<br><span class="gradient-text">campus move.</span></h1>
+        <p>Join a network of ambitious students, represent Aakaar, IIT Bombay at your college, and unlock exclusive rewards, workshops, and opportunities.</p>
+        <div class="hero-actions">
+            {% if user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url 'dashboard' %}">Open your dashboard <i class="bi bi-arrow-up-right ms-1"></i></a>
+            {% else %}
+                <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#registerModal">Become a CR <i class="bi bi-arrow-up-right ms-1"></i></a>
+                <a class="btn btn-outline-primary" href="#about">Explore the program <i class="bi bi-arrow-down ms-1"></i></a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="hero-stage">
+        <div class="hero-visual" data-tilt>
+            <div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div>
+            <img src="{% static 'img/hero-future-campus-cutout.png' %}" alt="Floating architectural model of a cable-stayed bridge and future campus works">
+            <div class="hero-float a"><strong>4.2K+</strong><small>active CRs</small></div>
+            <div class="hero-float b"><strong>50+</strong><small>events to discover</small></div>
+            <div class="hero-float c"><strong>01</strong><small>campus · your call</small></div>
+        </div>
+    </div>
+</section>
+
+<div class="metric-strip" aria-label="Program reach">
+    <div class="metric metric-reach"><div class="metric-top"><span class="metric-index">01 / Reach</span><span class="metric-icon"><i class="bi bi-people"></i></span></div><div class="metric-value stats-counter" data-target-text="4.2K+">4.2K+</div><div class="metric-label">Active CRs across the network</div><span class="metric-signal" aria-hidden="true"></span></div>
+    <div class="metric metric-campus"><div class="metric-top"><span class="metric-index">02 / Network</span><span class="metric-icon"><i class="bi bi-buildings"></i></span></div><div class="metric-value stats-counter" data-target-text="1.2K+">1.2K+</div><div class="metric-label">Colleges in the community</div><span class="metric-signal" aria-hidden="true"></span></div>
+    <div class="metric metric-events"><div class="metric-top"><span class="metric-index">03 / Momentum</span><span class="metric-icon"><i class="bi bi-lightning-charge"></i></span></div><div class="metric-value stats-counter" data-target-text="50+">50+</div><div class="metric-label">Events and experiences</div><span class="metric-signal" aria-hidden="true"></span></div>
+</div>
+
+<aside class="quote-ribbon" aria-label="Aakaar philosophy">
+    <p>&ldquo;Every landmark begins as a line someone was brave enough to draw.&rdquo;</p>
+</aside>
+
+<section id="about" class="section-shell roles-section">
+    <div class="section-kicker">01 / The role</div>
+    <div class="row g-5 align-items-end">
+        <div class="col-lg-7"><h2 class="section-title">The heartbeat of<br><em>Aakaar's outreach.</em></h2></div>
+        <div class="col-lg-5"><p class="section-copy mb-0">Aakaar’s College Representative Program is the heartbeat of our outreach. We’re on a mission to inspire college students across India to discover the exciting world of Civil Engineering. As a representative, you’ll grow your network, sharpen your skills, and gain hands-on experience you won’t find in classrooms.</p></div>
+    </div>
+    <div class="role-constellation">
+        <article class="role-node role-node-wide" data-spotlight data-reveal style="--delay:0ms; --role-rgb:68,224,207;">
+            <div class="role-node-head"><span class="role-number">01</span><span class="role-tag">visibility</span></div>
+            <div class="role-symbol"><i class="bi bi-person-badge"></i></div>
+            <div class="role-copy"><h3>Be a Face of Aakaar</h3><p>Represent one of India's most prestigious technical festivals at your college.</p></div>
+            <span class="role-trace" aria-hidden="true"></span>
+        </article>
+        <article class="role-node role-node-tall" data-spotlight data-reveal style="--delay:70ms; --role-rgb:255,208,38;">
+            <div class="role-node-head"><span class="role-number">02</span><span class="role-tag">signal</span></div>
+            <div class="role-symbol"><i class="bi bi-chat-dots"></i></div>
+            <div class="role-copy"><h3>Be a Communication link</h3><p>Act as a bridge between the organizing team and your college, ensuring a smooth flow of updates and information.</p></div>
+            <span class="role-trace" aria-hidden="true"></span>
+        </article>
+        <article class="role-node" data-spotlight data-reveal style="--delay:140ms; --role-rgb:255,117,87;">
+            <div class="role-node-head"><span class="role-number">03</span><span class="role-tag">insight</span></div>
+            <div class="role-symbol"><i class="bi bi-clipboard-data"></i></div>
+            <div class="role-copy"><h3>Be a Reporter</h3><p>Collect feedback from participants and share insights with the organizing team.</p></div>
+            <span class="role-trace" aria-hidden="true"></span>
+        </article>
+        <article class="role-node" data-spotlight data-reveal style="--delay:210ms; --role-rgb:96,220,255;">
+            <div class="role-node-head"><span class="role-number">04</span><span class="role-tag">lead</span></div>
+            <div class="role-symbol"><i class="bi bi-people"></i></div>
+            <div class="role-copy"><h3>Be a Leader</h3><p>Host promotional or knowledge-sharing activities on campus.</p></div>
+            <span class="role-trace" aria-hidden="true"></span>
+        </article>
+        <article class="role-node" data-spotlight data-reveal style="--delay:280ms; --role-rgb:255,208,38;">
+            <div class="role-node-head"><span class="role-number">05</span><span class="role-tag">build</span></div>
+            <div class="role-symbol"><i class="bi bi-calendar-check"></i></div>
+            <div class="role-copy"><h3>Be a Pioneer</h3><p>Collaborate with clubs and societies to enhance participation.</p></div>
+            <span class="role-trace" aria-hidden="true"></span>
+        </article>
+        <article class="role-node" data-spotlight data-reveal style="--delay:350ms; --role-rgb:109,230,166;">
+            <div class="role-node-head"><span class="role-number">06</span><span class="role-tag">imagine</span></div>
+            <div class="role-symbol"><i class="bi bi-lightbulb"></i></div>
+            <div class="role-copy"><h3>Be a Brainstorm</h3><p>Collaborate with brilliant minds to create impactful initiatives.</p></div>
+            <span class="role-trace" aria-hidden="true"></span>
+        </article>
+    </div>
+</section>
+
+<section id="incentive" class="section-shell pt-0">
+    <div class="glass-panel p-4 p-lg-5 momentum-panel">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-7"><div class="section-kicker">02 / The momentum</div><h2 class="section-title mb-3">Show up. <em>Stand out.</em></h2><p class="section-copy mb-0">Every task is a chance to grow your network, sharpen your skills, and create a meaningful connection between your campus and Aakaar. Stay tuned to the dashboard for tasks and updates.</p></div>
+            <div class="col-lg-5"><div class="d-grid gap-2"><div class="hero-note m-0"><span><i class="bi bi-gift me-2"></i>Exclusive rewards</span><span><i class="bi bi-easel2 me-2"></i>Workshops</span><span><i class="bi bi-lightning-charge me-2"></i>New opportunities</span></div><a class="btn btn-outline-primary align-self-start mt-3" href="{% url 'tasks_page' %}">See active tasks <i class="bi bi-arrow-up-right ms-1"></i></a></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="sponsors" class="section-shell pt-0 partners-section">
+    <div class="section-kicker">03 / In good company</div><h2 class="section-title">Our <em>partners.</em></h2>
+    <div class="partner-gallery" data-reveal>
+        <a class="partner-portal partner-unstop" href="https://unstop.com" target="_blank" rel="noopener">
+            <span class="partner-order">01 / platform</span><span class="partner-brand"><img src="{% static 'img/Unstop-Logo-Transparent.png' %}" alt="Unstop"></span><span class="partner-name">Platform partner <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a class="partner-portal partner-tribe" href="https://www.studenttribe.in" target="_blank" rel="noopener">
+            <span class="partner-order">02 / outreach</span><span class="partner-brand"><img src="{% static 'img/Student-Tribe-Transparent.png' %}" alt="Student Tribe"></span><span class="partner-name">Outreach partner <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+        <a class="partner-portal partner-stucred" href="https://stucred.flyy.in/83EG6ER" target="_blank" rel="noopener">
+            <span class="partner-order">03 / community</span><span class="partner-brand"><img src="{% static 'img/stucred.png' %}" alt="StuCred"></span><span class="partner-name">CR partner <i class="bi bi-arrow-up-right"></i></span>
+        </a>
+    </div>
+</section>
+
+<section id="faq" class="section-shell pt-0">
+    <div class="section-kicker">04 / Need to know</div><h2 class="section-title">Frequently<br><em>asked.</em></h2>
+    <div class="accordion faq-list" id="faqAccordion">
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c1"><i class="bi bi-question-circle me-2"></i>What is a College Representative?</button></h2><div id="c1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">You will be the face of Aakaar in your institute and the first point of contact for any student who requires information about Aakaar. As a CR, you'll bridge the gap between your college and our fest, helping students participate and engage with various opportunities.</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2"><i class="bi bi-person-check me-2"></i>What are the eligibility requirements?</button></h2><div id="c2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Students from any engineering college can register. We welcome enthusiastic individuals who are passionate about civil engineering and want to make a difference in their college community.</div></div></div>
+        <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3"><i class="bi bi-calendar-range me-2"></i>What is the duration of the Program?</button></h2><div id="c3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">The Program lasts until the main fest in March (approx. 5 months). During this period, you'll engage in various activities, complete tasks, and build your network while representing Aakaar.</div></div></div>
+    </div>
+</section>
+
+<section id="team" class="section-shell pt-0 contact-section">
+    <div class="section-kicker">05 / Your line in</div><h2 class="section-title">Contact <em>us.</em></h2>
+    <div class="contact-deck" data-reveal>
+        <article class="contact-profile">
+            <div class="contact-portrait"><span>01</span><img src="{% static 'img/karthikesh.jpg' %}" alt="Sarthak Kastiya"></div>
+            <div class="contact-identity"><h3>Sarthak Kastiya</h3><span class="role">Media and Publicity Manager</span></div>
+            <div class="contact-links"><a href="tel:8639398805" title="Call"><i class="bi bi-telephone-fill"></i><span>Call</span></a><a href="https://www.linkedin.com/in/karthikesh-bangi/" title="LinkedIn"><i class="bi bi-linkedin"></i><span>LinkedIn</span></a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=karthikesh@aakaariitb.org.in" title="Email"><i class="bi bi-envelope-fill"></i><span>Email</span></a></div>
+        </article>
+        <article class="contact-profile">
+            <div class="contact-portrait"><span>02</span><img src="{% static 'img/nancy.jpeg' %}" alt="Nidhi Patel"></div>
+            <div class="contact-identity"><h3>Nidhi Patel</h3><span class="role">Media and Publicity Manager</span></div>
+            <div class="contact-links"><a href="tel:9256223509" title="Call"><i class="bi bi-telephone-fill"></i><span>Call</span></a><a href="https://www.linkedin.com/in/nancy-soni/" title="LinkedIn"><i class="bi bi-linkedin"></i><span>LinkedIn</span></a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=nancy@aakaariitb.org.in" title="Email"><i class="bi bi-envelope-fill"></i><span>Email</span></a></div>
+        </article>
+        <!-- <article class="contact-profile">
+            <div class="contact-portrait"><span>03</span><img src="{% static 'img/sneha.jpg' %}" alt="Sneha Maldode"></div>
+            <div class="contact-identity"><h3>Sneha Maldode</h3><span class="role">Media and Publicity Manager</span></div>
+            <div class="contact-links"><a href="tel:9588446474" title="Call"><i class="bi bi-telephone-fill"></i><span>Call</span></a><a href="https://www.linkedin.com/in/sneha-maldode/" title="LinkedIn"><i class="bi bi-linkedin"></i><span>LinkedIn</span></a><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sneha@aakaariitb.org.in" title="Email"><i class="bi bi-envelope-fill"></i><span>Email</span></a></div>
+        </article> -->
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,957 @@
+<!-- {% load socialaccount %} -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+    </script>
+  <title>CR Dashboard </title>
+  {% load static %}
+  <link href="{% static 'css/home.css' %}" rel="stylesheet">
+</head>
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/favicon-16x16.png">
+
+
+<style>
+  .card-margin {
+    margin-bottom: 1.875rem;
+}
+
+.card {
+    border: 0;
+    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border: 1px solid #e6e4e9;
+    border-radius: 8px;
+}
+
+.card .card-header.no-border {
+    border: 0;
+}
+.card .card-header {
+    background: none;
+    padding: 0 0.9375rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    min-height: 50px;
+}
+.card-header:first-child {
+    border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
+}
+
+.widget-49 .widget-49-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #edf1fc;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-primary .widget-49-date-day {
+  color: #4e73e5;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-primary .widget-49-date-month {
+  color: #4e73e5;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fcfcfd;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-secondary .widget-49-date-day {
+  color: #dde1e9;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-secondary .widget-49-date-month {
+  color: #dde1e9;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #e8faf8;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-success .widget-49-date-day {
+  color: #17d1bd;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-success .widget-49-date-month {
+  color: #17d1bd;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ebf7ff;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-info .widget-49-date-day {
+  color: #36afff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-info .widget-49-date-month {
+  color: #36afff;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: floralwhite;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-warning .widget-49-date-day {
+  color: #FFC868;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-warning .widget-49-date-month {
+  color: #FFC868;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-danger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #feeeef;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-danger .widget-49-date-day {
+  color: #F95062;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-danger .widget-49-date-month {
+  color: #F95062;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-light {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fefeff;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-light .widget-49-date-day {
+  /* color: #f7f9fa; */
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-light .widget-49-date-month {
+  color: #f7f9fa;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ebedee;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-dark .widget-49-date-day {
+  color: #394856;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-dark .widget-49-date-month {
+  color: #394856;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-base {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f0fafb;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-base .widget-49-date-day {
+  color: #68CBD7;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-base .widget-49-date-month {
+  color: #68CBD7;
+  line-height: 1;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-meeting-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-meeting-info .widget-49-pro-title {
+  color: black;
+  font-size: 16px;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-meeting-info .widget-49-meeting-time {
+  color: black;
+  font-size: 13px;
+}
+
+.widget-49 .widget-49-meeting-points {
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: .5rem;
+}
+
+.widget-49 .widget-49-meeting-points .widget-49-meeting-item {
+  display: list-item;
+  color: #727686;
+}
+
+.widget-49 .widget-49-meeting-points .widget-49-meeting-item span {
+  margin-left: .5rem;
+}
+
+.widget-49 .widget-49-meeting-action {
+  text-align: right;
+}
+
+.widget-49 .widget-49-meeting-action a {
+  text-transform: uppercase;
+}
+
+
+
+h1{
+font-family: sans-serif;
+margin: 30px auto;
+text-align: center;
+font-size: 40px;
+max-width: 600px;
+position:relative;
+
+}
+h1:before{
+content: "";
+display:block;
+width: 120px;
+height:2px;
+background: #000;
+position: absolute;
+left: 0;
+top: 50%;
+z-index: -2;
+}
+h1:after{
+content: "";
+display:block;
+width: 120px;
+height:2px;
+background: #000;
+position: absolute;
+right: 0;
+top: 50%;
+z-index: -2;
+}
+span{
+background: #fff
+}
+</style>
+
+
+<body style="background-color:#ffffff; line-height: 1.3;">
+  {% load static %}
+    
+
+
+      <nav class="navbar navbar-expand-lg navbar-white bg-white" style="padding-top: 0px; margin-top: -10px;">
+        <div class="container"> <a href="/"><img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/logo.png" width="150px"></a> 
+          <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+          <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active"><a href="/" class="nav-link" style="font-size: 18px; color:black"> About </a>
+              </li>
+              <li class="nav-item active"><a href="/#responsibilty" class="nav-link" style="font-size: 18px; color:black">
+                  Responsibilities </a></li>
+              <li class="nav-item active"><a href="/#incentive" class="nav-link" style="font-size: 18px; color:black">
+                  Incentives </a></li>
+              <li class="nav-item active"><a href="/#testinomial" class="nav-link" style="font-size: 18px; color:black">
+                  Testinomials</a></li>
+              <li class="nav-item active"><a href="/#faq" class="nav-link" style="font-size: 18px; color:black"> FAQ </a>
+              </li>
+              <li class="nav-item active"><a href="/#team" class="nav-link" style="font-size: 18px; color:black"> Contact</a>
+              </li>
+            </ul>
+            <!-- <button type="button" class="btn" style="background-color: #355681; font-weight: 600;">REGISTER</button> -->
+            {% if user.is_authenticated %}
+            <a class="btn" style="background-color: #355681; font-weight: 600;" href="{% url 'account_logout' %}">Log
+              out</a>
+            {% else %}
+            <a class="btn" style="background-color: #355681; font-weight: 600; color: rgb(236, 229, 229);"
+              href="{% provider_login_url 'google' %}">Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
+
+
+
+
+<div class="container col-xxl-8 px-4">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="https://img.freepik.com/free-vector/site-stats-concept-illustration_114360-1509.jpg?w=740&t=st=1664708238~exp=1664708838~hmac=951e661e1ee79ba976a59b9f88f166d540f2c440fa5f3a49ce61e72feacfe4fe" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h3 class="display-5 fw-bold lh-1 mb-3">Welcome, {{name}}!!</h3>
+      <!-- <<h1 style="color: black;">Welcome, {{name}}!!</h1> -->
+      <p class="lead">Your CR Id is {{CRID}}</p>
+      {% if is_filled %}
+        <p>College : {{current_obj.colgName}}</p>
+        <p>State : {{current_obj.state}}</p>
+        <p>Pincode : {{current_obj.pincode}}</p>
+        
+      {% else %}
+        <p>Please update your profile</p>
+      {% endif %}
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Update Profile
+      </button>
+  </div>
+  </div>
+</div>
+
+
+<!-- ========== Update ProFile Form ======================================== -->
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Update Your Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/cr/updateProfile" method="post"> {%csrf_token%}
+          <div class="mb-3">
+            <label for="colName" class="form-label">College Name</label>
+            <input type="text" class="form-control" id="colName" name="colName" aria-placeholder="Your College Name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="state" class="form-label">State</label>
+            <input type="text" class="form-control" id="state" name="state" aria-placeholder="i.e. Maharastra" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="phoneNo" class="form-label">Phone No.</label>
+            <input type="text" class="form-control" id="phoneNo" name="phoneNo" aria-placeholder="1234567890" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="whatsNo" class="form-label">WhatsApp No.</label>
+            <input type="text" class="form-control" id="whatsNo" name="whatsNo" aria-placeholder="1234567890" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="dept" class="form-label">Your Department</label>
+            <input type="text" class="form-control" id="dept" name="dept" aria-placeholder="i.e. Mechanical" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="pin" class="form-label">PIN Code</label>
+            <input type="text" class="form-control" id="pin" name="pin" aria-placeholder="i.e. 1100xx" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+          </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ######################################################## -->
+
+
+<!-- <section >
+  <div class="container" >
+    <div>
+      <h3>Initial Instructions for CRs:</h3>
+      <ul>
+        <li>Aakaar is delighted to have you onboard on the journey of CR Program.</li>
+        <li>For further onboarding, make sure to update your profile.</li>
+        <li>Throughout the CR Program, Aakaar will provide tasks for the CRs, which you have to complete within the prescribed deadline.</li>
+        <li>Tasks will be based on developing strategies for marketing and building connections in your college, in order to organise events and sharing the opportunities in your college.</li>
+        <li>Offer letter will be provided soon</li>
+        <li>Further updates will be given via mail and Dashboard. Stay Tuned!</li>
+      </ul>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+
+
+<!-- <section style="border: 2px solid red; margin-top: -10px; padding-top: 0px;"> -->
+  <div class="container" style=" padding-top: -10px; margin-top: -30px;">
+    <h1 style="text-align: center" style="margin-top: 0px; padding-top: 0px; ">TASKS</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                    <h5 class="card-title">20 Points</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-primary">
+                                <span class="widget-49-date-day">01</span>
+                                <!-- <span class="widget-49-date-month">apr</span> -->
+                            </div>
+                            <div class="widget-49-meeting-info">
+                                <span class="widget-49-pro-title fw-bold">Social Media Task</span>
+                                <span class="widget-49-meeting-time"></span>
+                            </div>
+                        </div>
+                        <!-- <ol class="widget-49-meeting-points"> -->
+                            <p class="widget-49-meeting-item" style="margin-top: 10px;"><span>The responsibility of the leader should be to make a community and be well-informed, and spread the opportunities to them through social media, which are the platforms to create your own brand/personality. That’s the main motive for the task</span></p>
+                            <!-- <li class="widget-49-meeting-item"><span>Data migration is in scope</span></li>
+                            <li class="widget-49-meeting-item"><span>Session timeout increase to 30 minutes</span></li> -->
+                        <!-- </ol> -->
+                        <div class="widget-49-meeting-action">
+                            <button class="btn btn-sm btn-flash-border-primary fw-bold" data-bs-toggle="modal" data-bs-target="#task1">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                  <h5 class="card-title">50 Points</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-warning">
+                                <span class="widget-49-date-day">02</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                              <span class="widget-49-pro-title fw-bold">Paper Presentation Task</span>
+                              <span class="widget-49-meeting-time"></span>
+                          </div>
+                        </div>
+                        <p class="widget-49-meeting-item" style="margin-top: 10px;"><span>To promote research and innovation, Aakaar organizes International Civil Engineering Symposium, which provides opportunities for young scholars and professionals to get recognized at the international level and get a chance to interact with renowned professors</span></p>
+
+                        <!-- {% comment %} <ol class="widget-49-meeting-points">
+                            <li class="widget-49-meeting-item"><span>Scheming module is removed</span></li>
+                            <li class="widget-49-meeting-item"><span>App design contract confirmed</span></li>
+                            <li class="widget-49-meeting-item"><span>Client request to send invoice</span></li>
+                        </ol> {% endcomment %} -->
+                        <div class="widget-49-meeting-action">
+                          <button class="btn btn-sm btn-flash-border-primary fw-bold" data-bs-toggle="modal" data-bs-target="#task2">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ 
+<div class="col-lg-6">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                    <h5 class="card-title">10 points per participant</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-success">
+                                <span class="widget-49-date-day">03</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                              <span class="widget-49-pro-title fw-bold">Registration Task - Bonus Task</span>
+                             <!-- <span class="widget-49-meeting-time">Deadline: 25th December 2022</span> -->
+                            </div>
+                        </div>
+                        <p class="widget-49-meeting-item" style="margin-top: 10px;"><span>This task is related to the previous task titled <strong>“Paper presentation” </strong>. Symposium provides the platform to present your research work in structured ways and get rewarded. Also, get the opportunity to attend the biggest Civil Engineering Fest. </span></p>
+
+                        <div class="widget-49-meeting-action">
+                          <button class="btn btn-sm btn-flash-border-primary fw-bold" data-bs-toggle="modal" data-bs-target="#task3">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="col-lg-6">
+            <div class="card card-margin">
+                <div class="card-header no-border">
+                    <h5 class="card-title">15 points per participant</h5>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="widget-49">
+                        <div class="widget-49-title-wrapper">
+                            <div class="widget-49-date-success">
+                                <span class="widget-49-date-day">04</span>
+                            </div>
+                            <div class="widget-49-meeting-info">
+                              <span class="widget-49-pro-title fw-bold">Seismic Task</span>
+                              <span class="widget-49-meeting-time">Deadline: 5 January 2023</span>
+                            </div>
+                        </div>
+                       
+
+                        <p class="widget-49-meeting-item" style="margin-top: 10px;"><span> In Engineering, models are often used to analyze and test structures. To gain practical experience and intrigue creativity, we organize SeismiC, in which participants have to design an efficient and sustainable earthquake-resistant structure using simple popsicle sticks. </span></p>
+
+                        <div class="widget-49-meeting-action">
+                          <button class="btn btn-sm btn-flash-border-primary fw-bold" data-bs-toggle="modal" data-bs-target="#task4">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    </div>
+
+
+
+    <div class="modal fade" id="task1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="task1Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title " id="staticBackdropLabel">Task 1 Submission</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4>Task description</h4>
+            <ol>
+              <li>Follow Aakaar social media handles to be updated with the various initiatives launched: <br>
+                Instagram: <a href="https://www.instagram.com/aakaar_iitbombay/ ">https://www.instagram.com/aakaar_iitbombay/</a>  <br>
+                Linkedin: <a href=" https://www.linkedin.com/company/aakaariitb/">https://www.linkedin.com/company/aakaariitb/</a>   <br>
+                Facebook:  <a href="https://www.facebook.com/AakaariitBombay ">https://www.facebook.com/AakaariitBombay </a>   <br>
+                Twitter:  <a href="https://twitter.com/aakaariitb">https://twitter.com/aakaariitb</a>  
+                </li>
+                <li>
+                  Being a CR of your college, you have to make the people aware of your position for which: <br>
+                  <ul>
+                  <li>Facebook: Post that you have started working as College Representative at Aakaar, IIT Bombay</li>
+                  <li>Linkedin: Include “CR at Aakaar, IIT Bombay” in your bio and add in the Experience section as College Representative at Aakaar, IIT Bombay</li>
+                  <li>Instagram: Update your bio as CR at Aakaar, IIT Bombay</li>
+                </ul>
+                </li>
+            </ol>
+            <h4>Note</h4>
+            <ol>
+              <li>If you don’t have an account on the social media handles, then make it asap, as it’s compulsory to be having an account on Facebook, Linkedin and Instagram for future tasks</li>
+              <li>For any queries, mail us at <a href="akshat01@aakaariitbombay.org">akshat01@aakaariitbombay.org</a> or fill the google form <a href="https://forms.gle/FqbQBGQAj6DFZhpW7">https://forms.gle/FqbQBGQAj6DFZhpW7</a>
+                
+                </li>
+            </ol>
+            <h4>Submission</h4>
+            <ol>
+              <li>Take screenshots showing you are “following Aakaar, IIT Bombay” on all social media handles, put them in a google document, and share the link with us (enabling view mode) 
+              </li>
+              <li>Profile links of your accounts on Facebook, Linkedin and Instagram</li>
+            </ol>
+            <form action="/cr/task1" method="POST"> {%csrf_token%}
+                <h3>Link:</h3>
+                <textarea name="link" id="" cols="50" rows="10" required></textarea>
+                <!-- <input type="textarea" class="form-control" id="colName" name="colName" aria-placeholder="Your College Name" required> -->
+            
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <!-- <button  class="btn btn btn-secondary"  disabled>Deadline Passed</button>-->
+            {% if is_filled_taskone %}
+              <button  class="btn btn btn-success"  disabled>You have submitted</button>
+          
+            {%else %}
+              <button type="submit" class="btn btn-primary">Submit</button>
+            {%endif%}
+            
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+<!-- </section> -->
+    <div class="modal fade" id="task2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="task1Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title " id="staticBackdropLabel">Task 2 Submission</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4>Task description</h4>
+            <ol>
+              <li>Make a Post on Linkedin, Facebook using the given caption and poster
+                </li>
+                <li>
+                  Put Story of the post made on Linkedin, Facebook and the below-given Instagram Post
+                </li>
+                <li>
+                  Circulate in College Whatsapp Groups using the given caption and poster
+                </li>
+            </ol>
+            <h4>Required Links :</h4>
+            <ol>
+              <li>Instagram Post: <a href="https://www.instagram.com/p/Cl3nReSjoEK">https://www.instagram.com/p/Cl3nReSjoEK</a>
+                </li>
+                <li>
+                  Task Captions: <a href="https://docs.google.com/document/d/1KWxOuCykH7tVZWwq3G2sOB9e_KcDaI5ReRcQIs-g_Go/edit?usp=sharing">https://docs.google.com/document/d/1KWxOuCykH7tVZWwq3G2sOB9e_KcDaI5ReRcQIs-g_Go/edit?usp=sharing</a>
+                </li>
+                <li>
+                  ICES Paper Presentation Poster: <a href="https://drive.google.com/file/d/1Gt9Z4zWU42asdOHwHzZ-Z0zzGLfDp0de/view?usp=sharing">https://drive.google.com/file/d/1Gt9Z4zWU42asdOHwHzZ-Z0zzGLfDp0de/view?usp=sharing</a>
+                </li>
+                <li>
+                  Paper Presentation Brochure: <a href="https://drive.google.com/file/d/1xs_piaqIY6FBNcUniU8r3ndvjZ9rhByl/view?usp=sharing">https://drive.google.com/file/d/1xs_piaqIY6FBNcUniU8r3ndvjZ9rhByl/view?usp=sharing</a>
+
+                </li>
+            </ol>
+            <h4>Note</h4>
+            <ol>
+              <li>For any queries, mail us at <a href="akshat01@aakaariitbombay.org">akshat01@aakaariitbombay.org</a> or fill the google form <a href="https://forms.gle/FqbQBGQAj6DFZhpW7">https://forms.gle/FqbQBGQAj6DFZhpW7</a>
+                
+                </li>
+            </ol>
+            <h4>Submission</h4>
+            <ol>
+              <li>Fill out the form collecting some important information about your college: <a href="https://forms.gle/TqAsJ3u6t56QiXcq9">https://forms.gle/TqAsJ3u6t56QiXcq9</a>
+
+              </li>
+              <li>Give links to the post made on your social media handles
+              </li>
+            </ol>
+            <form action="/cr/task2" method="POST"> {%csrf_token%}
+                <h3>Link:</h3>
+                <textarea name="link" id="" cols="50" rows="10" required></textarea>
+                <!-- <input type="textarea" class="form-control" id="colName" name="colName" aria-placeholder="Your College Name" required> -->
+            
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <button  class="btn btn-secondary"  disabled>Deadline Passed</button>
+          <!-- {% if is_filled_tasktwo %}
+              <button  class="btn btn btn-success" disabled>You have submitted</button>
+              
+            {%else %}
+              <button type="submit" class="btn btn-success">Submit</button>
+            {%endif%}
+            -->
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  
+{% comment %} ########### TASK3 ########################################## {% endcomment %}
+
+    <div class="modal fade" id="task3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="task1Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title " id="staticBackdropLabel">Bonus Task Submission</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+    <h4>Task description</h4>
+    <ol>
+        <li>You have to devise strategies such that you have to bring minimum 5 participants in the ICES Paper Presentation on the website: <a href="https://symposium.aakaariitbombay.org/paper/">https://symposium.aakaariitbombay.org/paper/</a>  through your contact.</li>
+        <li>One participant will be counted only when it will register on the website (i.e. submitting the Team Details, Abstract and Authentication Letter)
+        </li>
+    </ol>
+    
+
+    
+    <h4>Task Guide</h4>
+    <ol>
+        <li>You can contact the Post Graduates (M.Tech and Ph.D) of your college, as they had already done research in their carrer
+        </li>
+        <li>You can reach the Civil B.Tech 3rd and 4th years as some had done research under professors among those interested
+        </li>
+        <li>You can contact professors of your college and explain them about it so that they can spread about it among their students
+        </li>
+    </ol>
+    <h4>Submission</h4>
+    <p>Make google sheet mentioning the participant name (Full Name) and participant phone number who have registered for ICES from your reference. You have to submit the link of the google sheet (make sure to give view access to everyone)
+    </p>
+    
+    <h4>Note</h4>
+    <p>For any queries, mail us at <a href="dineshk@aakaariitbombay.org">dineshk@aakaariitbombay.org</a> or fill the google form <a href="https://forms.gle/FqbQBGQAj6DFZhpW7">https://forms.gle/FqbQBGQAj6DFZhpW7"</a></p>
+            
+            
+
+            <form action="/cr/task3" method="POST"> {%csrf_token%}
+                <h3>Link:</h3>
+
+                <textarea name="link" id="" cols="50" rows="10" required></textarea>
+                <!-- <input type="textarea" class="form-control" id="colName" name="colName" aria-placeholder="Your College Name" required> -->
+            
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           <button  class="btn btn-secondary"  disabled>Deadline Passed</button>
+          <!--  {% if is_filled_taskthree %}
+              <button  class="btn btn btn-success" disabled>You have submitted</button>
+             
+            {%else %}
+              <button type="submit" class="btn btn-success">Submit</button>
+            {%endif%}
+            -->
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+{% comment %} ########### TASK4 ########################################## {% endcomment %}
+
+    <div class="modal fade" id="task4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="task4Label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title " id="staticBackdropLabel">Task 4 Submission</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h4>Task description</h4>
+            <ol>
+                <li>You have to devise strategies such that you have to bring a minimum of 10 participants to the <strong>Siesmic Competition</strong> on the website: <a href="https://competition.aakaariitbombay.org/seismic">https://competition.aakaariitbombay.org/seismic</a>  </li>
+                <li> <strong>One participant will be counted only when they submit the details of their team.
+                </strong></li>
+                <li><strong>While registering, make sure to tell them to enter your CR ID in the Registration Form (under Referral)
+                </strong></li>
+                <li><strong>Instagram:</strong> You have to make the <strong>story</strong> of the Instagram Post shared below
+                </li>
+                <li><strong>Facebook:</strong> You have to <strong>share</strong> to feed the below-mentioned Facebook Post
+    
+                </li>
+                <li><strong>Linkedin:</strong> You have to <strong>repost and share</strong> your thoughts on the below-mentioned Linkedin post
+                </li>
+                <li>Circulate in <strong>College Whatsapp Groups</strong> using the given caption and poster
+                </li>
+             
+            </ol>
+    
+            <h4>Required Links:</h4>
+            <ol>
+                <li>Instagram Post: <br><a href="https://www.instagram.com/p/CmlM-CAPV94">https://www.instagram.com/p/CmlM-CAPV94</a>
+                </li>
+                <li>Linkedin Post: <br><a href="https://www.linkedin.com/posts/aakaariitb_aakaar-seismic-iitb-activity-7012669233171992576-kI7B">https://www.linkedin.com/posts/aakaariitb_aakaar-seismic-iitb-activity-7012669233171992576-kI7B</a>
+                </li>
+                <li>Facebook Post: <br><a href="https://www.facebook.com/367812643297831/posts">https://www.facebook.com/367812643297831/posts</a>
+                </li>
+                <li>Whatsapp Caption: <br><a href="https://docs.google.com/document/d/1F5szoq-H0rdagsv6u82GFJlElVNWMNgGIB8w4DOZzOM/edit?usp=sharing">https://docs.google.com/document/d/1F5szoq-H0rdagsv6u82GFJlElVNWMNgGIB8w4DOZzOM/edit?usp=sharing</a>
+                </li>
+                <li>SeismiC Poster: <br><a href="https://drive.google.com/file/d/1y2vFXnJP5es9-WHSYiKMWNrUnciBlFMa/view?usp=sharing">https://drive.google.com/file/d/1y2vFXnJP5es9-WHSYiKMWNrUnciBlFMa/view?usp=sharing</a>
+    
+                </li>
+            </ol>
+    
+            <h4>Submission:</h4>
+            <ul>
+                <li>Make a google sheet mentioning the participant name (Full Name) and participant phone
+                number who have registered through your CR ID from your reference. You must submit the link to the google sheet (make sure to give view access to everyone) </li>
+                
+            </ul>
+    
+    
+           <h4>Task Guide:</h4>
+           <ol>
+            <li>You can contact your friends and make the team/ contact interested students</li>
+            <li>You can approach 2nd and 3rd Year Undergraduate students of your college as they used to look up for projects for practical experience</li>
+            <li><strong>Also there is a specific category for school students too, so you can contact your nearby schools/parent school and encourage the students to participate in the competition</strong></li>
+            <li>You can contact the professors of your college and explain it to them about it so that they can spread about it among their students</li>
+           </ol>
+           
+           <p><strong>Deadline: 21st December 2023</strong></p>
+    
+    
+    
+            <h4>Note</h4>
+            <ul>
+              <li>For any queries, mail us at <a href="akshat01@aakaariitbombay.org">akshat01@aakaariitbombay.org</a> or fill the google form <a href="https://forms.gle/FqbQBGQAj6DFZhpW7">https://forms.gle/FqbQBGQAj6DFZhpW7</a>
+                
+                </li>
+            </ul>
+            
+            <form action="/cr/task4" method="POST"> {%csrf_token%}
+                <h3>Link:</h3>
+                <textarea name="link4" id="" cols="50" rows="10" required></textarea>
+                <!-- <input type="textarea" class="form-control" id="colName" name="colName" aria-placeholder="Your College Name" required> -->
+            
+            
+          </div>
+    
+
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            {% if is_filled_taskfour %}
+              <button  class="btn btn btn-success" disabled>You have submitted</button>
+              <!-- <button type="submit" class="btn btn-primary">Submit Again</button> -->
+            {%else %}
+              <button type="submit" class="btn btn-success">Submit</button>
+            {%endif%}
+            
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+</body>
+</html>
+

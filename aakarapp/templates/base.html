@@ -1,0 +1,240 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050b14">
+    <title>{% block title %}Aakaar CR Program{% endblock %}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="{% static 'css/premium-theme.css' %}?v=20260928-designer-system" rel="stylesheet">
+    <link href="{% static 'css/designer-system.css' %}?v=20260928-04" rel="stylesheet">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <canvas id="architectural-field" aria-hidden="true"></canvas>
+    <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <div class="ambient-depth" aria-hidden="true"></div>
+    <div class="ambient-chrome" aria-hidden="true"></div>
+    <div class="custom-cursor" aria-hidden="true">
+        <span class="cursor-axis"></span>
+        <span class="cursor-bracket"></span>
+        <span class="cursor-core"></span>
+    </div>
+
+    <nav class="navbar navbar-expand-lg site-nav" aria-label="Primary navigation">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}" aria-label="Aakaar CR Program home">
+                <img class="nav-logo" src="{% static 'img/Collection-1-19th.png' %}" alt="Aakaar 19th Edition logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNav" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="siteNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a href="{% url 'home' %}#about" class="nav-link {% if request.resolver_match.url_name == 'home' %}is-active{% endif %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}><span class="nav-label">Home</span></a></li>
+                    <li class="nav-item"><a href="{% url 'tasks_page' %}" class="nav-link {% if request.resolver_match.url_name == 'tasks_page' %}is-active{% endif %}" {% if request.resolver_match.url_name == 'tasks_page' %}aria-current="page"{% endif %}><span class="nav-label">Tasks</span></a></li>
+                    <li class="nav-item"><a href="{% url 'leaderboard' %}" class="nav-link {% if request.resolver_match.url_name == 'leaderboard' %}is-active{% endif %}" {% if request.resolver_match.url_name == 'leaderboard' %}aria-current="page"{% endif %}><span class="nav-label">Leaderboard</span></a></li>
+                    <li class="nav-item"><a href="{% url 'home' %}#incentive" class="nav-link"><span class="nav-label">Incentives</span></a></li>
+                    <li class="nav-item"><a href="https://www.aakaariitb.org.in/" class="nav-link"><span class="nav-label">Aakaar 2026</span></a></li>
+                    <li class="nav-item"><a href="{% url 'home' %}#faq" class="nav-link"><span class="nav-label">FAQ</span></a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}is-active{% endif %}" href="{% url 'dashboard' %}" {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}><span class="nav-label">Dashboard</span></a></li>
+                        <li class="nav-item"><a class="nav-link nav-cta" href="{% url 'logout' %}"><span class="nav-label">Logout</span> <i class="bi bi-arrow-up-right ms-1"></i></a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link nav-cta" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><span class="nav-label">Login</span> <i class="bi bi-arrow-up-right ms-1"></i></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">{% block content %}{% endblock %}</main>
+
+    <footer class="site-footer d-flex flex-wrap justify-content-between align-items-center gap-3">
+        <span>© Aakaar, IIT Bombay 2026</span>
+        <ul class="footer-social">
+            <li><a href="https://www.instagram.com/aakaar_iitbombay/" title="Instagram"><i class="bi bi-instagram"></i></a></li>
+            <li><a href="https://www.facebook.com/AakaariitBombay" title="Facebook"><i class="bi bi-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/aakaariitb/" title="LinkedIn"><i class="bi bi-linkedin"></i></a></li>
+        </ul>
+    </footer>
+
+    <div class="modal fade auth-modal" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="auth-heading">
+                        <span class="auth-icon"><i class="bi bi-shield-lock"></i></span>
+                        <div><span class="modal-kicker">Aakaar CR network</span><h5 class="modal-title">Welcome back.</h5></div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="auth-intro">Continue to your campus representative workspace.</p>
+                    {% if messages %}{% for message in messages %}<div class="alert alert-{{ message.tags }} mb-3">{{ message }}</div>{% endfor %}{% endif %}
+                    {% if login_error %}<div class="alert alert-danger mb-3">{{ login_error }}</div>{% endif %}
+                    <form action="{% url 'login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3"><label class="form-label">Email address</label><input type="email" class="form-control" name="username_or_email" required></div>
+                        <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" name="password" required></div>
+                        <div class="text-end mb-4"><a class="text-info" href="{% url 'account_reset_password' %}">Forgot password?</a></div>
+                        <div class="auth-actions"><button type="submit" class="btn btn-primary">Enter portal <i class="bi bi-arrow-up-right ms-1"></i></button><button type="button" class="btn btn-outline-primary" data-bs-target="#registerModal" data-bs-toggle="modal" data-bs-dismiss="modal">Create account</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade auth-modal auth-modal-register" id="registerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="auth-heading">
+                        <span class="auth-icon"><i class="bi bi-person-plus"></i></span>
+                        <div><span class="modal-kicker">Join the movement</span><h5 class="modal-title">Create your CR account.</h5></div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="auth-intro">Set up your profile and represent Aakaar on your campus.</p>
+                    {% if error %}<div class="alert alert-danger mb-3">{{ error }}</div>{% endif %}
+                    <form action="{% url 'register_cr' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3"><label class="form-label">Full name</label><input type="text" class="form-control" name="names" required></div>
+                        <div class="mb-3"><label class="form-label">Email address</label><input type="email" class="form-control" name="emails" required></div>
+                        <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" name="password" required></div>
+                        <div class="mb-3"><label class="form-label">College name</label><input type="text" class="form-control" name="colName" required></div>
+                        <div class="row"><div class="col-md-6 mb-3"><label class="form-label">State</label><input type="text" class="form-control" name="state" required></div><div class="col-md-6 mb-3"><label class="form-label">City</label><input type="text" class="form-control" name="city" required></div></div>
+                        <div class="mb-3"><label class="form-label">Pincode</label><input type="text" class="form-control" name="pincode" pattern="[0-9]{6}" required></div>
+                        <div class="mb-4"><label class="form-label">Phone number</label><input type="tel" class="form-control" name="phoneNo" pattern="[0-9]{10}" required></div>
+                        <button type="submit" class="btn btn-primary w-100">Create account <i class="bi bi-arrow-up-right ms-1"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/architectural-field.js' %}?v=20260928-construction-site-2"></script>
+    <script>
+    (() => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const finePointer = window.matchMedia('(pointer: fine)').matches;
+        const pointer = { x: -1000, y: -1000, smoothX: -1000, smoothY: -1000 };
+        const ambientRipples = [];
+        const canvas = document.getElementById('ambient-canvas');
+        const canvasVisible = canvas && getComputedStyle(canvas).display !== 'none';
+        const ctx = canvasVisible ? canvas.getContext('2d') : null;
+        if (canvas && ctx && !reduceMotion) {
+            let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 1.6), scrollPhase = window.scrollY;
+            const motes = Array.from({length: 48}, (_, i) => ({ x:Math.random(), y:Math.random(), depth:Math.random()*.75+.25, speed:Math.random()*.000035+.000012, size:Math.random()*1.4+.35, tone:i%7===0?'255,117,87':i%3===0?'255,208,38':'68,224,207' }));
+            const beacons = Array.from({length: 11}, (_, i) => ({ x:(i*0.381966+0.08)%1, y:(i*0.227+0.12)%1, phase:Math.random()*Math.PI*2 }));
+            const resize = () => { width=window.innerWidth; height=window.innerHeight; canvas.width=width*dpr; canvas.height=height*dpr; canvas.style.width=width+'px'; canvas.style.height=height+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); };
+            const draw = now => {
+                const time = now * .001;
+                ctx.clearRect(0,0,width,height);
+                pointer.smoothX += (pointer.x-pointer.smoothX)*.055;
+                pointer.smoothY += (pointer.y-pointer.smoothY)*.055;
+                document.body.style.setProperty('--cursor-x', `${pointer.smoothX}px`);
+                document.body.style.setProperty('--cursor-y', `${pointer.smoothY}px`);
+                ctx.save();
+                ctx.globalCompositeOperation = 'screen';
+
+                const horizon = height*.61 + Math.sin(time*.18)*12;
+                const vanishX = width*.5 + (pointer.smoothX-width*.5)*.11;
+                const railGradient = ctx.createLinearGradient(0,horizon,0,height);
+                railGradient.addColorStop(0,'rgba(45,214,255,0)');
+                railGradient.addColorStop(.48,'rgba(45,214,255,.055)');
+                railGradient.addColorStop(1,'rgba(255,208,38,.13)');
+                ctx.strokeStyle=railGradient;
+                ctx.lineWidth=.75;
+                for(let i=-10;i<=10;i++) { ctx.beginPath(); ctx.moveTo(vanishX,horizon); ctx.lineTo(width*.5+i*width*.115+(pointer.smoothX-width*.5)*.035,height+30); ctx.stroke(); }
+
+                for(let band=0;band<6;band++) {
+                    const yBase=height*(.13+band*.145);
+                    const gradient=ctx.createLinearGradient(0,0,width,0);
+                    gradient.addColorStop(0,'rgba(45,214,255,0)');
+                    gradient.addColorStop(.18,band%2?'rgba(68,224,207,.08)':'rgba(255,208,38,.075)');
+                    gradient.addColorStop(.52,band===2?'rgba(255,117,87,.12)':'rgba(68,224,207,.11)');
+                    gradient.addColorStop(.84,'rgba(255,208,38,.065)');
+                    gradient.addColorStop(1,'rgba(45,214,255,0)');
+                    ctx.beginPath();
+                    for(let x=-30;x<=width+30;x+=22) {
+                        const dx=x-pointer.smoothX;
+                        const gravity=Math.exp(-(dx*dx)/65000)*((pointer.smoothY-yBase)*.075);
+                        const y=yBase+Math.sin(x*.0062+time*.28+band*1.37)*20+Math.sin(x*.0028-time*.2)*12+gravity+(scrollPhase*.018%44);
+                        x===-30?ctx.moveTo(x,y):ctx.lineTo(x,y);
+                    }
+                    ctx.strokeStyle=gradient; ctx.lineWidth=band===2?1.15:.72; ctx.stroke();
+                }
+
+                motes.forEach(mote => {
+                    mote.y-=mote.speed*(16.6)*mote.depth;
+                    mote.x+=Math.sin(time*.3+mote.y*8)*.000025*mote.depth;
+                    if(mote.y<-.04){mote.y=1.04;mote.x=Math.random();}
+                    let x=mote.x*width, y=mote.y*height;
+                    const dx=x-pointer.smoothX,dy=y-pointer.smoothY,d=Math.hypot(dx,dy);
+                    if(d<175&&d>1){const force=(175-d)/175*18;x+=dx/d*force;y+=dy/d*force;}
+                    const pulse=.22+.18*Math.sin(time*(.55+mote.depth)+mote.x*12);
+                    ctx.fillStyle=`rgba(${mote.tone},${pulse*mote.depth})`;
+                    ctx.fillRect(x,y,mote.size*(1+mote.depth),mote.depth<.55?1:mote.size);
+                });
+
+                beacons.forEach((beacon,index)=>{
+                    const x=beacon.x*width+(pointer.smoothX-width*.5)*(index%2?-.012:.012);
+                    const y=beacon.y*height;
+                    const pulse=.5+.5*Math.sin(time*.8+beacon.phase);
+                    ctx.strokeStyle=`rgba(${index%4===0?'255,117,87':'68,224,207'},${.08+pulse*.1})`;
+                    ctx.lineWidth=.7;
+                    ctx.beginPath();ctx.arc(x,y,5+pulse*4,0,Math.PI*2);ctx.stroke();
+                    ctx.beginPath();ctx.moveTo(x-14,y);ctx.lineTo(x-7,y);ctx.moveTo(x+7,y);ctx.lineTo(x+14,y);ctx.stroke();
+                });
+
+                for(let i=ambientRipples.length-1;i>=0;i--){const ripple=ambientRipples[i];ripple.r+=4.2;ripple.alpha*=.955;ctx.strokeStyle=`rgba(255,117,87,${ripple.alpha})`;ctx.lineWidth=1;ctx.beginPath();ctx.arc(ripple.x,ripple.y,ripple.r,0,Math.PI*2);ctx.stroke();if(ripple.alpha<.025)ambientRipples.splice(i,1);}
+                ctx.restore();
+                requestAnimationFrame(draw);
+            };
+            resize();
+            window.addEventListener('resize', resize);
+            window.addEventListener('scroll', () => { scrollPhase=window.scrollY; }, {passive:true});
+            window.addEventListener('pointermove', event => { pointer.x=event.clientX; pointer.y=event.clientY; pointer.active=true; }, {passive:true});
+            if (!finePointer) window.addEventListener('pointerdown', event => ambientRipples.push({x:event.clientX,y:event.clientY,r:0,alpha:.65}));
+            requestAnimationFrame(draw);
+        }
+        document.querySelectorAll('.hero-visual[data-tilt]').forEach(visual => {
+            visual.addEventListener('pointermove', e => { const rect=visual.getBoundingClientRect(); const rx=((e.clientY-rect.top)/rect.height-.5)*-5; const ry=((e.clientX-rect.left)/rect.width-.5)*5; visual.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`; });
+            visual.addEventListener('pointerleave', () => visual.style.transform='');
+        });
+        document.querySelectorAll('[data-spotlight]').forEach(panel => panel.addEventListener('pointermove', e => { const rect=panel.getBoundingClientRect(); panel.style.setProperty('--pointer-x', `${e.clientX-rect.left}px`); panel.style.setProperty('--pointer-y', `${e.clientY-rect.top}px`); }));
+        document.querySelectorAll('.glass-panel, .glass-card, .metric, .partner-portal, .contact-profile, .stat-block').forEach(surface => {
+            surface.classList.add('cursor-reactive');
+            surface.addEventListener('pointermove', event => {
+                const rect = surface.getBoundingClientRect();
+                surface.style.setProperty('--surface-x', `${event.clientX - rect.left}px`);
+                surface.style.setProperty('--surface-y', `${event.clientY - rect.top}px`);
+            }, {passive:true});
+            surface.addEventListener('pointerleave', () => {
+                surface.style.setProperty('--surface-x', '50%');
+                surface.style.setProperty('--surface-y', '50%');
+            });
+        });
+        const reveals = document.querySelectorAll('[data-reveal]');
+        if (reveals.length && !reduceMotion) {
+            document.body.classList.add('motion-ready');
+            const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); } }), { threshold: .13, rootMargin: '0px 0px -5% 0px' });
+            reveals.forEach(item => revealObserver.observe(item));
+        }
+        const counters = document.querySelectorAll('.stats-counter');
+        const countUp = counter => { const target = counter.dataset.targetText; if (!target || counter.dataset.counted) return; counter.dataset.counted='1'; const number=parseFloat(target.replace('+','').replace('K','')); const multiplier=target.includes('K')?1000:1; const total=Math.floor(number*multiplier); const start=performance.now(); const render=now=>{ const progress=Math.min((now-start)/1000,1); const current=Math.floor(progress*total); counter.textContent=target.includes('K') && progress<1 ? (current/1000).toFixed(1)+'K' : progress<1 ? current : target; if(progress<1) requestAnimationFrame(render); }; requestAnimationFrame(render); };
+        if ('IntersectionObserver' in window) { const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){countUp(entry.target);observer.unobserve(entry.target);}}),{threshold:.3}); counters.forEach(c=>observer.observe(c)); } else counters.forEach(countUp);
+    })();
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

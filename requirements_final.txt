@@ -1,0 +1,80 @@
+# --- Core Django and required apps ---
+Django>=4.1
+djangorestframework
+django-cors-headers
+django-allauth[google]
+django-import-export
+requests
+PyJWT
+python-dotenv
+Pillow
+psycopg2-binary
+sqlparse
+django-allauth
+
+# --- Async / FastAPI (already in project) ---
+aiofiles==24.1.0
+aioredis==2.0.1
+aiosqlite==0.17.0
+alembic==1.13.2
+anaconda==0.0.1.1
+annotated-types==0.7.0
+anyio==4.0.0
+async-lru==2.0.4
+async-timeout==4.0.3
+attrs==23.1.0
+Babel==2.13.0
+bcrypt==4.2.0
+fastapi==0.114.0
+fastapi-admin==1.0.4
+httptools==0.6.1
+starlette==0.38.4
+tortoise-orm==0.21.6
+uvicorn==0.30.6
+watchfiles==0.24.0
+
+# --- Data Science / Utilities ---
+numpy
+pandas
+matplotlib-inline
+networkx
+sympy
+SQLAlchemy==2.0.34
+
+# --- Jupyter / Dev Tools ---
+jupyter
+notebook
+ipykernel
+ipywidgets
+widgetsnbextension
+jupyterlab
+
+# --- Common Python Utils ---
+python-dateutil
+python-multipart
+PyYAML
+six
+urllib3
+certifi
+idna
+charset-normalizer
+
+# --- Torch (already in your file) ---
+torch
+torchvision
+torchaudio
+
+
+# --- Development / Testing Tools ---
+black
+flake8
+isort
+pytest
+pytest-django
+coverage
+django-debug-toolbar
+
+
+
+
+cryptography

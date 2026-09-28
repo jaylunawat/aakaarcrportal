@@ -1,0 +1,40 @@
+databases:
+  - name: aakaar-cr-db
+    plan: free
+    databaseName: aakaar_cr
+    user: aakaar_cr
+
+services:
+  - type: web
+    name: aakaar-cr-portal
+    runtime: python
+    plan: free
+    buildCommand: ./build.sh
+    startCommand: gunicorn aakar.wsgi:application --bind 0.0.0.0:$PORT --workers 3 --timeout 120
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_ALLOWED_HOSTS
+        value: .onrender.com,crportal.aakaariitb.org.in,www.crportal.aakaariitb.org.in
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: https://*.onrender.com,https://crportal.aakaariitb.org.in,https://www.crportal.aakaariitb.org.in
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aakaar-cr-db
+          property: connectionString
+      - key: DATABASE_SSL_REQUIRED
+        value: "true"
+      - key: DJANGO_SECURE_SSL_REDIRECT
+        value: "true"
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
+      - key: DEFAULT_FROM_EMAIL
+        sync: false
+

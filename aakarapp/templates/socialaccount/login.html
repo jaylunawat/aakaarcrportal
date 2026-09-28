@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 150px; padding-bottom: 50px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg text-center">
+                <div class="card-body p-5">
+                    <h1 class="card-title mb-4">Sign In Via Google</h1>
+
+                    <p class="mb-4">You are about to sign in using a third-party account from Google.</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-primary btn-lg" type="submit">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

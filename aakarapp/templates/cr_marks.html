@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html lang="en"><head>
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous">
+    </script>
+  <title>CR Program - Aakaar | IIT Bombay</title>
+ 
+ <link href="/static/css/home.css" rel="stylesheet" />
+
+
+    <!-- Fevicon  -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+<style>
+    h2 {
+    text-align:center;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: 20px 0;
+    grid-gap: 20px;
+    font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+'Segoe UI'
+Roboto
+'Helvetica Neue'
+Arial
+'Noto Sans'
+sans-serif
+'Apple Color Emoji'
+'Segoe UI Emoji'
+'Segoe UI Symbol'
+'Noto Color Emoji'
+    }
+    
+    h2:after,h2:before {
+    content: " ";
+    margin: 1em 0 0.5em 0;
+    position: relative;
+    text-shadow: 0 -1px rgba(0,0,0,0.6);
+    font-size: 28px;
+    line-height: 40px;
+    background: #355681;
+    background: rgba(53,86,129, 0.8);
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0 10px 0 10px;
+    box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+
+
+    font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+'Segoe UI'
+Roboto
+'Helvetica Neue'
+Arial
+'Noto Sans'
+sans-serif
+'Apple Color Emoji'
+'Segoe UI Emoji'
+'Segoe UI Symbol'
+'Noto Color Emoji'
+    }
+    .section-title {
+    padding-bottom: 30px;
+}
+.g-6,
+.gx-6 {
+  --bs-gutter-x: 4.5rem;
+}
+.g-6,
+.gy-6 {
+  --bs-gutter-y: 4.5rem;
+}
+
+.display-4 {
+  text-shadow: 4px 4px 0px #2f9aea;
+  animation: fadeIn 2.5s linear forwards;
+}
+
+@media (min-width: 576px) {
+  .g-sm-6,
+  .gx-sm-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-sm-6,
+  .gy-sm-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .g-md-6,
+  .gx-md-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-md-6,
+  .gy-md-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .g-lg-6,
+  .gx-lg-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-lg-6,
+  .gy-lg-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .g-xl-6,
+  .gx-xl-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  
+  .g-xl-6,
+  .gy-xl-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+@media (min-width: 1400px) {
+  .g-xxl-6,
+  .gx-xxl-6 {
+    --bs-gutter-x: 4.5rem;
+  }
+  .g-xxl-6,
+  .gy-xxl-6 {
+    --bs-gutter-y: 4.5rem;
+  }
+}
+.mb-6 {
+  margin-bottom: 4.5rem !important;
+}
+.py-6 {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+.w-100px {
+  width: 100px !important;
+}
+.h-100px {
+  height: 100px !important;
+}
+@media (min-width: 576px) {
+  .mb-sm-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-sm-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 768px) {
+  .mb-md-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-md-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .mb-lg-6 {
+    margin-bottom: 4.5rem !important;
+  }
+  .py-lg-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  .mb-xl-6 {
+    margin-bottom: 4.5rem !important;
+    margin-left: -40px ; 
+    margin-right: 40px;
+  }
+  .py-xl-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+    
+  }
+}
+@media (min-width: 1400px) {
+  .mb-xxl-6 {
+    margin-bottom: 4.5rem !important;
+    margin-left: -40px; margin-right: 40px;
+  }
+  .py-xxl-6 {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+    
+  }
+}
+#demo{
+    background: linear-gradient(112deg, #ffffff 50%, #eaeef2 50%);
+    border-radius: 7px;
+    max-width: 900px;
+    margin: auto;
+}
+.carousel-caption {
+    position: initial;
+    z-index: 10;
+    padding: 5rem 8rem;
+    color: #000000;
+    font-family:
+ui-sans-serif
+system-ui
+-apple-system
+BlinkMacSystemFont
+'Segoe UI'
+Roboto
+'Helvetica Neue'
+Arial
+'Noto Sans'
+sans-serif
+'Apple Color Emoji'
+'Segoe UI Emoji'
+'Segoe UI Symbol'
+'Noto Color Emoji';
+    text-align: center;
+    font-size: 1.2rem;
+    /* font-style: italic; */
+    font-weight: 500;
+    line-height: 2rem;
+}
+@media(max-width:767px){
+    .carousel-caption {
+        position: initial;
+        z-index: 10;
+        padding: 3rem 2rem;
+        color: #000000;
+        text-align: center;
+        font-size: 0.8rem;
+        /* font-style: italic; */
+        font-weight: 500;
+        line-height: 1.5rem;
+    }
+}
+.carousel-caption img{
+    width: 25%;
+    height: 150px;
+    border-radius: 5rem;
+    margin-top: 2rem;
+}
+@media(max-width:767px){
+    .carousel-caption img{
+        width: 25%;
+        height: 80px;
+        border-radius: 4rem;
+        margin-top: 1rem;
+    }
+    .display-6{
+  font-size:20px;
+}
+
+.size-change{
+  font-size:18px;
+}
+
+}
+#image-caption{
+    font-style: normal;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+@media(max-width:767px){
+    #image-caption{
+        font-style: normal;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+}
+i{
+    background-color: #355681;
+    padding: 1.4rem;
+    border-radius: 7px;
+}
+@media(max-width:767px){
+    i{
+        padding: 0.8rem;
+    }
+}
+.carousel-control-prev{
+    justify-content: flex-start;
+}
+
+.carousel-control-next {
+    justify-content: flex-end;
+}
+.carousel-control-prev,.carousel-control-next{
+    transition: none;
+    opacity: unset;
+}
+.accordion-section .panel-default > .panel-heading {
+    border: 0;
+    border-radius: 7px;
+    background: #eaeef2;
+    padding: 0;
+}
+.accordion-section .panel-default .panel-title a {
+    display: block;
+    text-decoration: none;
+    font-weight: 400;
+    font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    'Segoe UI'
+    Roboto
+    'Helvetica Neue'
+    Arial
+    'Noto Sans'
+    sans-serif
+    'Apple Color Emoji'
+    'Segoe UI Emoji'
+    'Segoe UI Symbol'
+    'Noto Color Emoji' ;
+       font-size: 1.1rem;
+    color: #000000;
+}
+.accordion-section .panel-default .panel-title a:after {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    content: "\f106";
+    color: #355681;
+    float: right;
+    margin-top: 5px;
+    /* position: relative; */
+}
+.accordion-section .panel-default .panel-title a.collapsed:after {
+    content: "\f107";
+}
+.accordion-section .panel-default .panel-body {
+    font-size: 1.2rem;
+    font-family:
+    ui-sans-serif
+    system-ui
+    -apple-system
+    BlinkMacSystemFont
+    'Segoe UI'
+    Roboto
+    'Helvetica Neue'
+    Arial
+    'Noto Sans'
+    sans-serif
+    'Apple Color Emoji'
+    'Segoe UI Emoji'
+    'Segoe UI Symbol'
+    'Noto Color Emoji'    
+
+
+}
+
+.display-4 {
+  text-shadow: 2px 2px 0px #2f9aea;
+  animation: fadeIn 2.5s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0
+  }
+
+  100% {
+      opacity: 1;
+  }
+
+}
+.lead_class:hover{
+  color: #000000;
+}
+td,th{
+    text-align: center;
+  }
+  @media(max-width:430px) screen {
+    
+  }
+</style>
+
+</head>
+
+<body style="background-color:#F8F9FA; line-height: 1.3;">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-top: 0px; margin-top: -10px;">
+    <div class="container"><a href="/cr"> <img src="https://raw.githubusercontent.com/Himanshi62/AAKAAR/main/aakar-website/static/img/logo.png" width="150px" /></a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active"><a href="#about" class="nav-link" style="font-size: 18px; color:black"> About </a>
+          </li>
+          <li class="nav-item active"><a href="#responsibilty" class="nav-link" style="font-size: 18px; color:black">
+              Responsibilities </a></li>
+          <li class="nav-item active"><a href="#incentive" class="nav-link" style="font-size: 18px; color:black">
+              Incentives </a></li>
+          <li class="nav-item active"><a href="#testinomial" class="nav-link" style="font-size: 18px; color:black">
+              Testimonials</a></li>
+          <li class="nav-item active"><a href="#faq" class="nav-link" style="font-size: 18px; color:black"> FAQ </a>
+          </li>
+          <li class="nav-item active"><a href="#team" class="nav-link" style="font-size: 18px; color:black"> Contact</a>
+          </li>
+        </ul>
+        <!-- <button type="button" class="btn" style="background-color: #355681; font-weight: 600;">REGISTER</button> -->
+        
+        <a class="btn" style="background-color: #355681; font-weight: 600; color: rgb(236, 229, 229);" href="/cr/accounts/google/login/">Login</a>
+        
+      </div>
+    </div>
+  </nav>
+
+  <center><h1 class="new">CR Scores For December Month </h1></center>
+  
+
+
+
+<table border="2"  class="dataframe table table-primary">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CR_id</th>
+      <th>Name</th>
+      <th>College</th>
+      <th>Marks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>AK220217</td>
+      <td>3036_sheshnaag</td>
+      <td>Easwari Engineering college</td>
+      <td>205</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AK220166</td>
+      <td>saravana</td>
+      <td>Velammal College of Engineering and Technology</td>
+      <td>195</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AK220127</td>
+      <td>sushma</td>
+      <td>Vidyavardhaka College of Engineering Mysore</td>
+      <td>195</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AK220099</td>
+      <td>satyajeet</td>
+      <td>NIT ROURKELA</td>
+      <td>190</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>AK220622</td>
+      <td>053_dhruv</td>
+      <td>National Institute of Technology, Srinagar</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>AK220541</td>
+      <td>nikita4</td>
+      <td>Bennett University</td>
+      <td>160</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>AK220252</td>
+      <td>vikram_singh</td>
+      <td>Mbm Engineering College Jodhpur</td>
+      <td>145</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>AK220507</td>
+      <td>mehak</td>
+      <td>KC College</td>
+      <td>135</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>AK220125</td>
+      <td>atharva_kusurkar</td>
+      <td>Datta Meghe College of Engineering</td>
+      <td>130</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>AK220232</td>
+      <td>dip</td>
+      <td>Indian Institute of Information technology Bhagalpur</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>AK220143</td>
+      <td>zerik</td>
+      <td>Rajkiye Engineering College</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>AK220515</td>
+      <td>biswajeet</td>
+      <td>National Institute of Technology, Rourkela</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>AK220493</td>
+      <td>padmini_devi</td>
+      <td>international school of technology and sciences</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>AK220754</td>
+      <td>suraj1</td>
+      <td>Jspm's Imperial College of Engineering and Research Wagholi. Pune</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>AK220755</td>
+      <td>anisha</td>
+      <td>Jspm's Imperial College of Engineering and Research Wagholi. Pune</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>AK220288</td>
+      <td>sumit</td>
+      <td>Mahatma Gandhi Mission's College of Engineering and Technology</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>AK220565</td>
+      <td>3268_vaishnavi</td>
+      <td>Bharati vidyapeeth's college of engineering for women's, pune</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>AK220577</td>
+      <td>somil_mishra</td>
+      <td>Vellore Institute of technology</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>AK220700</td>
+      <td>the_qatin</td>
+      <td>Shri Shankaracharya College Of Pharmaceutical sciences</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>AK220343</td>
+      <td>swapnali_sanjay</td>
+      <td>Shri Guru Gobind Singhji Institute of Engineering and Technology</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>AK220524</td>
+      <td>3340_rupali</td>
+      <td>Bharati Vidyapeeth's College of engineering for women's pune</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>AK220657</td>
+      <td>not found name</td>
+      <td>not found colg</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>AK220070</td>
+      <td>mohit</td>
+      <td>Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>AK220380</td>
+      <td>rutik3</td>
+      <td>Sharadchandra pawar college of engineering and technology</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>AK220242</td>
+      <td>sushma4</td>
+      <td>Dr. D Ramanaidu vignana jyothi agriculture engineering polytechnic</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>AK220548</td>
+      <td>shreyas</td>
+      <td>Terna Engineering College</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>AK220068</td>
+      <td>deepanshu</td>
+      <td>Deen Bandhu Chhotu Ram University of Science and Technology</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>AK220052</td>
+      <td>dikshant</td>
+      <td>Thapar Institute of Engineering and Technology</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>AK220600</td>
+      <td>naina</td>
+      <td>Sanskriti University</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>AK220543</td>
+      <td>praveen6</td>
+      <td>Loyola institute of technology</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>AK220607</td>
+      <td>avishek</td>
+      <td>NIT Warangal</td>
+      <td>60</td>
+    </tr>
+    <!-- <tr>
+      <th>31</th>
+      <td>AK220678</td>
+      <td>21ec005_pratham</td>
+      <td>CHARUSAT</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>AK220396</td>
+      <td>mohan</td>
+      <td>Paavai Engineering College</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>AK220147</td>
+      <td>arpit7</td>
+      <td>Jd college  of engineering</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>AK220389</td>
+      <td>nimish</td>
+      <td>NMIMS MUMBAI</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>AK220604</td>
+      <td>kunal2</td>
+      <td>Pimpri Chinchwad college of engineering pune</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>AK220508</td>
+      <td>rajan</td>
+      <td>ORIENTAL COLLGEE OF TECHNOLOGY</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>AK220562</td>
+      <td>shivangi</td>
+      <td>Indian Institute of Technology Kharagpur</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>AK220528</td>
+      <td>somaksh</td>
+      <td>College Of Vocational Studies, Delhi University</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>AK220410</td>
+      <td>sudhanshu</td>
+      <td>R.L.S.Y. Collage Muzaffarpur</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>AK220531</td>
+      <td>kavya5</td>
+      <td>Indraprastha College For Women</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>AK220054</td>
+      <td>e06-</td>
+      <td>Zakir Hussain College Of Engineering And Technology</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>AK220417</td>
+      <td>shailesh</td>
+      <td>Pacific University</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>AK220567</td>
+      <td>rahul2</td>
+      <td>BRAINWARE UNIVERSITY, KOLKATA</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>AK220462</td>
+      <td>kartik</td>
+      <td>Uttaranchal University</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>AK220450</td>
+      <td>manasi8</td>
+      <td>Shri Guru Gobind Singhji Institute Of Engineering And Technology, Nanded</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>AK220441</td>
+      <td>shubham5</td>
+      <td>Shivajirao S. Jondhale College of Engineering College,</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>AK220557</td>
+      <td>prasad</td>
+      <td>Government College of Engineering Aurangabad</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>AK220098</td>
+      <td>abhiram</td>
+      <td>RASTRAKAVI RAMDHARI SINGH DINKAR COLLEGE OF ENGINEERING BEGUSARAI</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>AK220130</td>
+      <td>02</td>
+      <td>PSG Institute Of Technology And Applied Research</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>AK220371</td>
+      <td>nikita1</td>
+      <td>Chitkara University</td>
+      <td>35</td>
+    </tr> -->
+  </tbody>
+</table>
+
+
+
+ 
+
+  <!-- #################################################################### -->
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top container">
+    <div class="col-md-4 d-flex align-items-center">
+      <span class="mb-3 mb-md-0 text-muted">© Aakaar, IIT Bombay 2022-23</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3" style="padding-right: 10px;"><a class="text-muted" href="https://twitter.com/aakaariitb"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-twitter" viewBox="0 0 16 16">
+            <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"></path>
+          </svg></a></li>
+      <li class="ms-3" style="padding-right: 10px;"><a class="text-muted" href="https://www.instagram.com/aakaar_iitbombay/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+            </svg></a></li>
+      <li class="ms-3" style="padding-right: 5px;"><a class="text-muted" href="https://www.facebook.com/AakaariitBombay"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-facebook" viewBox="0 0 16 16">
+            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
+          </svg></a></li>
+      <li class="ms-3" style="padding-right: 5px;"><a class="text-muted" href="https://www.linkedin.com/company/aakaariitb/"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#355681" class="bi bi-linkedin" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path>
+          </svg></a></li>
+    </ul> 
+</footer>
+
+
+</body></html>

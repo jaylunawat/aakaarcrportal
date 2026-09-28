@@ -1,0 +1,144 @@
+/* *{
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(137, 224, 244, 0.8),rgba(112, 42, 250, 0.5)),url(https://source.unsplash.com/1400x500/?books);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+}
+
+.title{
+    width: 60%;
+    margin: 150px;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    
+}
+
+.title h1{
+    margin-bottom: 30px;
+}
+
+.title p{
+    line-height: 22px;
+    font-size: 13px;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.col{
+    flex-basis: 50%;
+    text-align: center;
+    color:lightseagreen;
+}
+
+.counter-box{
+    width: 30%;
+    height: 100%;
+    background: #fff;
+    padding: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 20px -4px #66676c;
+}
+
+h2,span{
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 50px;
+    color: #000;
+} */
+
+.counter-box .new {
+    font-size: 40px;
+    color: #009688;
+    /* display: block; */
+
+}
+
+/* .counts {
+    padding: 70px 0 60px;
+  }
+  
+  .counts .count-box {
+    padding: 30px 30px 25px 30px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    background: #f1f6fe;
+  }
+  
+  .counts .count-box i {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    background: #106eea;
+    color: #fff;
+    width: 56px;
+    height: 56px;
+    line-height: 0;
+    border-radius: 50px;
+    border: 5px solid #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .counts .count-box span {
+    font-size: 36px;
+    display: block;
+    font-weight: 600;
+    color: #062b5b;
+  } */
+  
+  /* .counts .count-box p {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+  } */
+
+  .iframe-container{
+    width: 50%;
+  } 
+  .compi-content{
+    width: 50%;
+    height: 500px;
+  }
+   .iframe-container iframe{
+    width: 100%;
+    height: 500px;
+  }
+
+  @media (max-width:400px){
+    .iframe-container{
+      width: 100%;
+      /* height: 100px; */
+    }
+    .iframe-container iframe{
+      height: 200px;
+    }
+    .compi-content{
+      width: 100%;
+      height: 200px;
+    }
+    
+  }
