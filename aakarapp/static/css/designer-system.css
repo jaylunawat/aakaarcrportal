@@ -168,6 +168,7 @@ p { letter-spacing: -.012em; }
     box-shadow: 7px 7px 0 rgba(0, 0, 0, .5);
     backdrop-filter: blur(16px);
 }
+.site-nav > .container { position: relative; }
 .site-nav::before {
     border-radius: 0;
     background:
@@ -431,6 +432,113 @@ p { letter-spacing: -.012em; }
 .participant-name { font-weight: 700; }
 .leader-points { color: var(--signal); font-weight: 800; }
 
+/* Animal portraits — cropped directly from the supplied illustration sheet. */
+.animal-avatar {
+    --avatar-size: 52px;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    flex: 0 0 var(--avatar-size);
+    display: inline-block;
+    overflow: hidden;
+    border: 2px solid #33464e;
+    border-radius: 50%;
+    background-color: #efe7dd;
+    background-image: url('../img/animal-avatar-sheet.png');
+    background-repeat: no-repeat;
+    background-size: 500% auto;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, .56);
+}
+.avatar-rhino-orange { background-position: 12% 24%; }
+.avatar-black-bear { background-position: 49.6% 24%; }
+.avatar-koala { background-position: 87% 24%; }
+.avatar-brown-bear { background-position: 12% 58.8%; }
+.avatar-owl { background-position: 49.6% 58.8%; }
+.avatar-deer { background-position: 87% 58.8%; }
+.avatar-raccoon { background-position: 12% 93.5%; }
+.avatar-fox { background-position: 49.6% 93.5%; }
+.avatar-rhino-green { background-position: 87% 93.5%; }
+
+.profile-identity,
+.leader-identity {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+.profile-identity { gap: clamp(14px, 2vw, 22px); }
+.profile-identity > div,
+.leader-identity > div { min-width: 0; }
+.animal-avatar-profile {
+    --avatar-size: clamp(76px, 7vw, 100px);
+    border-width: 3px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, .58);
+}
+.leader-identity { gap: 14px; }
+.animal-avatar-leader { --avatar-size: 52px; }
+
+.avatar-picker {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.avatar-picker legend {
+    float: none;
+    width: auto;
+    margin: 0 0 4px;
+    color: var(--ink);
+    font: 700 .78rem/1 var(--font-mono);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.avatar-picker > p {
+    margin: 0 0 13px;
+    color: var(--ink-muted);
+    font-size: .9rem;
+}
+.avatar-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+}
+.avatar-options label { min-width: 0; cursor: pointer; }
+.avatar-options input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+.avatar-choice {
+    display: flex;
+    min-height: 110px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 6px;
+    border: 1px solid #2d3e46;
+    background: rgba(255, 255, 255, .025);
+    color: var(--ink-muted);
+    font: 700 .68rem/1.1 var(--font-mono);
+    letter-spacing: .04em;
+    text-align: center;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+.avatar-choice .animal-avatar { --avatar-size: 58px; }
+.avatar-options label:hover .avatar-choice,
+.avatar-options input:checked + .avatar-choice {
+    border-color: var(--signal);
+    background: rgba(255, 208, 38, .09);
+    color: var(--ink);
+    transform: translate(-1px, -1px);
+}
+.avatar-options input:focus-visible + .avatar-choice {
+    outline: 3px solid rgba(68, 224, 207, .36);
+    outline-offset: 2px;
+}
+
 /* Forms use the same physical-panel language. */
 .modal-content, .auth-modal .modal-content {
     border: 2px solid #405159;
@@ -459,7 +567,27 @@ p { letter-spacing: -.012em; }
 
 @media (max-width: 991px) {
     .site-nav { inset: 10px 10px auto; border-radius: 3px; }
+    .site-nav > .container {
+        height: 100%;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    .site-nav .navbar-brand,
+    .site-nav .navbar-toggler {
+        position: relative;
+        z-index: 3;
+        flex: 0 0 auto;
+        transform: none !important;
+    }
     .site-nav .navbar-collapse {
+        position: absolute;
+        z-index: 2;
+        top: calc(100% + 10px);
+        right: 0;
+        left: 0;
+        max-height: calc(100vh - 102px);
+        margin-top: 0;
+        overflow-y: auto;
         border: 2px solid #34474f;
         border-radius: 3px;
         background: #070d11;
@@ -483,6 +611,10 @@ p { letter-spacing: -.012em; }
     .page-intro { padding-bottom: 24px; }
     .page-intro h1 { font-size: clamp(3.2rem, 15vw, 4.6rem); }
     .leaderboard-table tbody tr:hover { transform: none; }
+    .animal-avatar-profile { --avatar-size: 72px; }
+    .animal-avatar-leader { --avatar-size: 42px; }
+    .leader-identity { gap: 10px; }
+    .avatar-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -4,20 +4,84 @@
 
 {% block content %}
 <div class="dashboard-shell">
-    <div class="page-intro"><div><span class="eyebrow">CR control room</span><h1>Your<br><span class="gradient-text">momentum.</span></h1></div><a class="btn btn-outline-primary" href="{% url 'tasks_page' %}">Browse tasks <i class="bi bi-arrow-up-right ms-1"></i></a></div>
+    <div class="page-intro dashboard-intro">
+        <div><h1>Your<br><span class="gradient-text">momentum.</span></h1></div>
+        <a class="btn btn-outline-primary" href="{% url 'tasks_page' %}">Browse tasks <i class="bi bi-arrow-up-right ms-1"></i></a>
+    </div>
+
     <section class="glass-panel profile-panel">
-        <div class="profile-top"><div><span class="micro-label">Welcome back</span><h2>{{ user.first_name|default:user.username }} <span aria-hidden="true">✦</span></h2><p class="profile-meta">CR ID: {{ CRID|default:"Pending" }} <span class="mx-2">·</span> {{ current_obj.colgName|default:"Complete your profile" }}</p><p class="profile-meta">Join our WhatsApp group for updates — <a href="https://chat.whatsapp.com/HYEdsBfCN6n4LD8HdLg256" target="_blank" rel="noopener">open invite <i class="bi bi-arrow-up-right"></i></a></p></div><button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#updateProfileModal"><i class="bi bi-pencil-square me-2"></i>Edit profile</button></div>
-        <div class="stat-rail"><div class="stat-block"><div class="stat-title">Your rank</div><div class="stat-value">#{{ rank }}</div></div><div class="stat-block"><div class="stat-title">Your points</div><div class="stat-value">{{ points }}</div></div></div>
+        <div class="profile-top">
+            <div class="profile-identity">
+                <span class="animal-avatar animal-avatar-profile avatar-{{ current_obj.avatar|default:'fox' }}" role="img" aria-label="{{ current_obj.get_avatar_display|default:'Fox' }} avatar"></span>
+                <div>
+                    <span class="micro-label">Welcome back</span>
+                    <h2>{{ user.first_name|default:user.username }}</h2>
+                    <p class="profile-meta">CR ID: {{ CRID|default:"Pending" }} <span class="mx-2">·</span> {{ current_obj.colgName|default:"Complete your profile" }}</p>
+                    <p class="profile-meta">Join our WhatsApp group for updates — <a href="https://chat.whatsapp.com/HYEdsBfCN6n4LD8HdLg256" target="_blank" rel="noopener">open invite <i class="bi bi-arrow-up-right"></i></a></p>
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#updateProfileModal"><i class="bi bi-pencil-square me-2"></i>Edit profile</button>
+        </div>
+        <div class="stat-rail">
+            <div class="stat-block"><div class="stat-title">Your rank</div><div class="stat-value">#{{ rank }}</div></div>
+            <div class="stat-block"><div class="stat-title">Your points</div><div class="stat-value">{{ points }}</div></div>
+        </div>
     </section>
+
     <section class="glass-panel history-panel">
         <div class="panel-heading"><h3>Tasks done by you</h3><span>{{ completed_tasks|length }} logged</span></div>
-        <div class="table-responsive"><table class="table history-table"><thead><tr><th>Task</th><th>Status</th><th class="text-end">Points</th></tr></thead><tbody>
-            {% for submission in completed_tasks %}
-            <tr><td><strong>{{ submission.task.title }}</strong><div class="text-muted small mt-1"><i class="bi bi-calendar3 me-1"></i>{{ submission.submitted_at|date:"d M Y" }}</div></td><td>{% if submission.graded %}<span class="status-pill success"><i class="bi bi-check-circle"></i>Graded</span>{% else %}<span class="status-pill pending"><i class="bi bi-clock"></i>Pending review</span>{% endif %}</td><td class="text-end"><strong>{{ submission.marks }}</strong><small class="text-muted d-block">points</small></td></tr>
-            {% empty %}<tr><td colspan="3" class="text-center py-5"><i class="bi bi-inbox display-6 d-block mb-3 text-muted"></i><p class="mb-1">You haven't submitted any tasks yet.</p><small class="text-muted">Start completing tasks to see your progress here.</small></td></tr>{% endfor %}
-        </tbody></table></div>
+        <div class="table-responsive">
+            <table class="table history-table">
+                <thead><tr><th>Task</th><th>Status</th><th class="text-end">Points</th></tr></thead>
+                <tbody>
+                    {% for submission in completed_tasks %}
+                    <tr>
+                        <td><strong>{{ submission.task.title }}</strong><div class="text-muted small mt-1"><i class="bi bi-calendar3 me-1"></i>{{ submission.submitted_at|date:"d M Y" }}</div></td>
+                        <td>{% if submission.graded %}<span class="status-pill success"><i class="bi bi-check-circle"></i>Graded</span>{% else %}<span class="status-pill pending"><i class="bi bi-clock"></i>Pending review</span>{% endif %}</td>
+                        <td class="text-end"><strong>{{ submission.marks }}</strong><small class="text-muted d-block">points</small></td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="3" class="text-center py-5"><i class="bi bi-inbox display-6 d-block mb-3 text-muted"></i><p class="mb-1">You haven't submitted any tasks yet.</p><small class="text-muted">Start completing tasks to see your progress here.</small></td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 </div>
 
-<div class="modal fade" id="updateProfileModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title"><i class="bi bi-person-gear me-2"></i>Update your profile</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><form action="{% url 'updateProfile' %}" method="post">{% csrf_token %}<div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" name="names" value="{{ current_obj.names }}" required></div><div class="mb-3"><label class="form-label">College name</label><input type="text" class="form-control" name="colName" value="{{ current_obj.colgName }}" required></div><div class="mb-3"><label class="form-label">State</label><input type="text" class="form-control" name="state" value="{{ current_obj.state }}" required></div><div class="mb-3"><label class="form-label">Phone number</label><input type="tel" class="form-control" name="phoneNo" value="{{ current_obj.mobileNo }}" pattern="[0-9]{10}" required></div><div class="modal-footer px-0 pb-0"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button><button type="submit" class="btn btn-primary">Save changes <i class="bi bi-check-lg ms-1"></i></button></div></form></div></div></div></div>
+<div class="modal fade" id="updateProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="bi bi-person-gear me-2"></i>Update your profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'updateProfile' %}" method="post">
+                    {% csrf_token %}
+                    <fieldset class="avatar-picker mb-4">
+                        <legend>Choose your avatar</legend>
+                        <p>Your avatar appears beside your name and on the leaderboard.</p>
+                        <div class="avatar-options">
+                            <label><input type="radio" name="avatar" value="rhino-orange" {% if current_obj.avatar == 'rhino-orange' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-rhino-orange"></span><small>Rhino</small></span></label>
+                            <label><input type="radio" name="avatar" value="black-bear" {% if current_obj.avatar == 'black-bear' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-black-bear"></span><small>Black bear</small></span></label>
+                            <label><input type="radio" name="avatar" value="koala" {% if current_obj.avatar == 'koala' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-koala"></span><small>Koala</small></span></label>
+                            <label><input type="radio" name="avatar" value="brown-bear" {% if current_obj.avatar == 'brown-bear' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-brown-bear"></span><small>Brown bear</small></span></label>
+                            <label><input type="radio" name="avatar" value="owl" {% if current_obj.avatar == 'owl' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-owl"></span><small>Owl</small></span></label>
+                            <label><input type="radio" name="avatar" value="deer" {% if current_obj.avatar == 'deer' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-deer"></span><small>Deer</small></span></label>
+                            <label><input type="radio" name="avatar" value="raccoon" {% if current_obj.avatar == 'raccoon' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-raccoon"></span><small>Raccoon</small></span></label>
+                            <label><input type="radio" name="avatar" value="fox" {% if current_obj.avatar == 'fox' or not current_obj.avatar %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-fox"></span><small>Fox</small></span></label>
+                            <label><input type="radio" name="avatar" value="rhino-green" {% if current_obj.avatar == 'rhino-green' %}checked{% endif %}><span class="avatar-choice"><span class="animal-avatar avatar-rhino-green"></span><small>Rhino</small></span></label>
+                        </div>
+                    </fieldset>
+                    <div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" name="names" value="{{ current_obj.names }}" required></div>
+                    <div class="mb-3"><label class="form-label">College name</label><input type="text" class="form-control" name="colName" value="{{ current_obj.colgName }}" required></div>
+                    <div class="mb-3"><label class="form-label">State</label><input type="text" class="form-control" name="state" value="{{ current_obj.state }}" required></div>
+                    <div class="mb-3"><label class="form-label">Phone number</label><input type="tel" class="form-control" name="phoneNo" value="{{ current_obj.mobileNo }}" pattern="[0-9]{10}" required></div>
+                    <div class="modal-footer px-0 pb-0"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button><button type="submit" class="btn btn-primary">Save changes <i class="bi bi-check-lg ms-1"></i></button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

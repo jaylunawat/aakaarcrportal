@@ -106,12 +106,8 @@ def dashboard(request):
     if request.user.is_superuser:
         return redirect('/admin/')
     
-    try:
-        profile = TaskZero.objects.filter(username=request.user.username).first()
-        is_filled = True
-    except TaskZero.DoesNotExist:
-        profile = None
-        is_filled = False
+    profile = TaskZero.objects.filter(username=request.user.username).first()
+    is_filled = profile is not None
 
     # --- REVISED RANKING LOGIC ---
     
@@ -176,6 +172,10 @@ def updateProfile(request):
         profile.whatsappNo = request.POST.get('whatsNo', '')
         profile.pincode = request.POST.get('pin', '')
         profile.address = request.POST.get('address', '')
+        selected_avatar = request.POST.get('avatar', '')
+        valid_avatars = {value for value, _label in TaskZero.AVATAR_CHOICES}
+        if selected_avatar in valid_avatars:
+            profile.avatar = selected_avatar
         profile.save()
 
     return redirect('dashboard')
@@ -253,10 +253,15 @@ def leaderboard(request):
         total_score=Coalesce(Sum('submission__marks'), 0)
     ).filter(total_score__gt=0)  # Only include users with a score greater than 0
 
+    ranked_users = list(users_with_scores)
+    profiles = {
+        profile.username: profile
+        for profile in TaskZero.objects.filter(username__in=[user.username for user in ranked_users])
+    }
+
     leaderboard_data = []
-    for user in users_with_scores:
-        # Try to get the detailed profile for the user
-        profile = TaskZero.objects.filter(username=user.username).first()
+    for user in ranked_users:
+        profile = profiles.get(user.username)
 
         # --- START OF FIX ---
         # Check if a profile was found. If not, profile will be None.
@@ -265,16 +270,19 @@ def leaderboard(request):
             # We also check if the names or colgName fields are empty
             display_name = profile.names or (user.first_name or user.username)
             college_name = profile.colgName or "Not Specified"
+            avatar = profile.avatar
         else:
             # This user has a score but no profile. Use fallback data.
             display_name = user.first_name or user.username # Use first_name, or username if that's empty
             college_name = "Not Specified"
+            avatar = "fox"
         # --- END OF FIX ---
 
         leaderboard_data.append({
             'name': display_name,
             'college': college_name,
-            'score': user.total_score
+            'score': user.total_score,
+            'avatar': avatar,
         })
 
     # Sort the list by score (highest first)

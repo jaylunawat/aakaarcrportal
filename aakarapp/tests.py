@@ -3,7 +3,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from .admin import SubmissionAdminForm
-from .models import Submission, Task
+from .models import Submission, Task, TaskZero
 
 
 class AdminOperationsTests(TestCase):
@@ -75,3 +75,70 @@ class AdminOperationsTests(TestCase):
         self.submission.refresh_from_db()
         self.assertEqual(self.submission.marks, 100)
         self.assertTrue(self.submission.graded)
+
+
+class ParticipantAvatarTests(TestCase):
+    def setUp(self):
+        self.participant = User.objects.create_user(
+            username="diva",
+            email="diva@example.com",
+            password="participant-test-password",
+            first_name="Diva",
+        )
+        self.profile = TaskZero.objects.create(
+            crid="AK250002",
+            names="Diva Agrawal",
+            username="diva",
+            email="diva@example.com",
+            emails="diva@example.com",
+            colgName="IIT Bombay",
+            state="Maharashtra",
+            city="Mumbai",
+            mobileNo="9999999999",
+            dept="Civil Engineering",
+            whatsappNo="9999999999",
+            pincode="400076",
+            address="Powai",
+            avatar="fox",
+        )
+        self.client.force_login(self.participant)
+
+    def test_dashboard_uses_avatar_without_decorative_heading_or_symbol(self):
+        response = self.client.get(reverse("dashboard"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "avatar-fox")
+        self.assertNotContains(response, "CR control room")
+        self.assertNotContains(response, "✦")
+
+    def test_profile_update_saves_selected_avatar(self):
+        response = self.client.post(
+            reverse("updateProfile"),
+            {
+                "names": "Diva Agrawal",
+                "colName": "IIT Bombay",
+                "state": "Maharashtra",
+                "phoneNo": "9999999999",
+                "avatar": "owl",
+            },
+        )
+
+        self.assertRedirects(response, reverse("dashboard"))
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.avatar, "owl")
+
+    def test_leaderboard_shows_participant_avatar(self):
+        task = Task.objects.create(title="Outreach", description="Share Aakaar", points=100)
+        Submission.objects.create(
+            task=task,
+            user=self.participant,
+            link="https://example.com/proof",
+            marks=75,
+            graded=True,
+        )
+
+        response = self.client.get(reverse("leaderboard"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "avatar-fox")
+        self.assertContains(response, "Diva Agrawal")

@@ -422,7 +422,6 @@
             const wave = Math.sin(time * 8) * 1.5 * sceneScale;
             ctx.strokeStyle = `rgba(${palette.paper},${machine.greet * .9})`;
             line(localX + 1, localY + 2, localX + 4 * sceneScale + wave, localY - 5 * sceneScale);
-            drawGreeting(localX, localY + 15 * sceneScale, sceneScale, machine.greet);
         }
         ctx.restore();
     };
@@ -470,6 +469,16 @@
         drawMachineOperator(machine, -2 * sceneScale, -29 * sceneScale, time);
         ctx.restore();
 
+        // Draw text outside the direction-flipped machine context so “HI” is never mirrored.
+        if (machine.greet > .04) {
+            drawGreeting(
+                position.x - machine.direction * 2 * sceneScale,
+                position.y - 14 * sceneScale,
+                sceneScale,
+                machine.greet
+            );
+        }
+
         if (machine.greet < .2 && Math.random() < dt * 7) {
             addParticle(
                 position.x - machine.direction * 20 * sceneScale,
@@ -508,6 +517,10 @@
         ctx.strokeRect(25 * sceneScale, (-22 + lift) * sceneScale, 11 * sceneScale, 7 * sceneScale);
         drawMachineOperator(machine, 0, -26 * sceneScale, time);
         ctx.restore();
+
+        if (machine.greet > .04) {
+            drawGreeting(position.x, position.y - 11 * sceneScale, sceneScale, machine.greet);
+        }
 
         if (machine.greet < .2 && Math.random() < dt * 4) {
             addParticle(position.x + machine.direction * 15 * sceneScale, position.y - 2, palette.coral, machine.direction * 4, -3, .55, 1.4, 1);

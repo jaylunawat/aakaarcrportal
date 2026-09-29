@@ -6,6 +6,18 @@ from django.contrib.auth.models import User
 # It's better to link this to Django's User model with a OneToOneField
 # but we can address that later.
 class TaskZero(models.Model):
+    AVATAR_CHOICES = (
+        ("rhino-orange", "Rhino — orange"),
+        ("black-bear", "Black bear"),
+        ("koala", "Koala"),
+        ("brown-bear", "Brown bear"),
+        ("owl", "Owl"),
+        ("deer", "Deer"),
+        ("raccoon", "Raccoon"),
+        ("fox", "Fox"),
+        ("rhino-green", "Rhino — green"),
+    )
+
     crid = models.CharField(max_length=10)
     names = models.CharField(max_length = 200)
     username = models.CharField(max_length = 200)
@@ -19,6 +31,7 @@ class TaskZero(models.Model):
     whatsappNo = models.CharField(max_length = 10)
     pincode = models.CharField(max_length = 6)
     address = models.CharField(max_length = 200)
+    avatar = models.CharField(max_length=20, choices=AVATAR_CHOICES, default="fox")
 
     class Meta:
         verbose_name = "CR profile"
