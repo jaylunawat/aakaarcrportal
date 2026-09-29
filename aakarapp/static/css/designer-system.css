@@ -376,7 +376,47 @@ p { letter-spacing: -.012em; }
 .contact-section::before { right: 0; }
 .contact-profile::before { background: linear-gradient(90deg, rgba(68,224,207,.08), rgba(255,208,38,.045), rgba(255,117,87,.065)); }
 .contact-identity .role { color: var(--signal); }
-.contact-links a { border-radius: 2px; }
+.contact-photo-frame {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #e8e4da;
+}
+.contact-photo-frame img {
+    filter: none;
+    transform: scale(1.72);
+    transform-origin: 50% 23%;
+}
+.contact-profile:hover .contact-photo-frame img {
+    filter: none;
+    transform: scale(1.8);
+}
+.contact-links a {
+    min-width: 44px;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #465960;
+    border-radius: 2px;
+    background: #0b1217;
+    color: var(--ink);
+    box-shadow: 3px 3px 0 rgba(0,0,0,.68);
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .035em;
+}
+.contact-links a span {
+    max-width: 84px;
+    opacity: 1;
+}
+.contact-links a:hover,
+.contact-links a:focus-visible {
+    color: #05090d;
+    border-color: #f5f3ec;
+    background: #f5f3ec;
+    box-shadow: 2px 2px 0 var(--signal-cyan);
+    transform: translate(2px, 2px);
+}
 
 /* Interior pages share the same editorial hierarchy. */
 .dashboard-shell, .tasks-shell, .leaderboard-shell { padding-top: 88px; }
@@ -563,7 +603,23 @@ p { letter-spacing: -.012em; }
 .btn-close { border-radius: 2px; }
 
 .site-footer { border-top: 2px solid #2b3a41; font-family: var(--font-mono); font-size: .68rem; }
-.footer-social a { border-radius: 2px; }
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #465960;
+    border-radius: 2px;
+    background: #0b1217;
+    color: var(--ink);
+    box-shadow: 3px 3px 0 rgba(0,0,0,.68);
+}
+.footer-social a:hover,
+.footer-social a:focus-visible {
+    color: #05090d;
+    border-color: #f5f3ec;
+    background: #f5f3ec;
+    box-shadow: 2px 2px 0 var(--signal-cyan);
+    transform: translate(2px, 2px);
+}
 
 @media (max-width: 991px) {
     .site-nav { inset: 10px 10px auto; border-radius: 3px; }
