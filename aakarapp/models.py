@@ -19,6 +19,11 @@ class TaskZero(models.Model):
     whatsappNo = models.CharField(max_length = 10)
     pincode = models.CharField(max_length = 6)
     address = models.CharField(max_length = 200)
+
+    class Meta:
+        verbose_name = "CR profile"
+        verbose_name_plural = "CR profiles"
+        ordering = ("names",)
     
     def __str__(self):
         return f"{self.username} | {self.crid}"
@@ -33,9 +38,6 @@ class Task(models.Model):
     points = models.IntegerField(default=100)
     # This is the new field for the deadline
     deadline = models.DateTimeField(null=True, blank=True, help_text="Optional: The task will disappear after this date.")
-
-    def __str__(self):
-        return self.title
 
     def __str__(self):
         return self.title

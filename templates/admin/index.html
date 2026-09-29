@@ -1,0 +1,88 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static log admin_dashboard %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'admin/css/dashboard.css' %}">
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard operations-dashboard{% endblock %}
+{% block nav-breadcrumbs %}{% endblock %}
+{% block nav-sidebar %}{% endblock %}
+{% block content_title %}{% endblock %}
+
+{% block content %}
+  {% admin_dashboard_stats as stats %}
+  <div class="ops-dashboard">
+    <section class="ops-hero" aria-labelledby="ops-title">
+      <div class="ops-hero-copy">
+        <span class="ops-kicker">Programme control room</span>
+        <h1 id="ops-title">Manage tasks, reviews and points.</h1>
+        <p>Everything your CR team needs is organised around the actions you perform most often.</p>
+      </div>
+      <div class="ops-hero-actions">
+        <a class="ops-button ops-button-primary" href="{% url 'admin:aakarapp_submission_changelist' %}?graded__exact=0">
+          Review pending submissions
+          {% if stats.pending_submissions %}<span class="ops-count">{{ stats.pending_submissions }}</span>{% endif %}
+        </a>
+        <a class="ops-button" href="{% url 'admin:aakarapp_task_add' %}">Create a task <span aria-hidden="true">＋</span></a>
+      </div>
+    </section>
+
+    <section class="ops-metrics" aria-label="Programme overview">
+      <a class="ops-metric ops-metric-cyan" href="{% url 'admin:aakarapp_submission_changelist' %}?graded__exact=0">
+        <span>Awaiting review</span><strong>{{ stats.pending_submissions }}</strong><small>Open the scoring queue</small>
+      </a>
+      <a class="ops-metric ops-metric-yellow" href="{% url 'admin:aakarapp_task_changelist' %}">
+        <span>Active tasks</span><strong>{{ stats.active_tasks }}</strong><small>Create or update a brief</small>
+      </a>
+      <a class="ops-metric ops-metric-coral" href="{% url 'admin:aakarapp_taskzero_changelist' %}">
+        <span>CR profiles</span><strong>{{ stats.participants }}</strong><small>Find a participant</small>
+      </a>
+      <a class="ops-metric ops-metric-blue" href="{% url 'admin:aakarapp_submission_changelist' %}?graded__exact=1">
+        <span>Points awarded</span><strong>{{ stats.points_awarded }}</strong><small>{{ stats.reviewed_submissions }} reviewed submissions</small>
+      </a>
+    </section>
+
+    <section class="ops-workspace">
+      <article class="ops-panel ops-review-guide">
+        <header><div><span class="ops-panel-label">Review workflow</span><h2>Verify a task submission</h2></div><a href="{% url 'admin:aakarapp_submission_changelist' %}?graded__exact=0">Open queue <span aria-hidden="true">→</span></a></header>
+        <ol class="ops-steps">
+          <li><span>01</span><div><strong>Open the evidence</strong><p>Use the file or link in the Evidence column.</p></div></li>
+          <li><span>02</span><div><strong>Check the task brief</strong><p>Compare the work against the instructions and maximum score.</p></div></li>
+          <li><span>03</span><div><strong>Enter points</strong><p>Type the score directly in the list. Invalid scores are blocked.</p></div></li>
+          <li><span>04</span><div><strong>Mark it reviewed</strong><p>Tick Reviewed, then use Save at the bottom of the list.</p></div></li>
+        </ol>
+      </article>
+
+      <article class="ops-panel ops-shortcuts">
+        <header><div><span class="ops-panel-label">Common actions</span><h2>Go straight to the work</h2></div></header>
+        <div class="ops-shortcut-list">
+          <a href="{% url 'admin:aakarapp_submission_changelist' %}"><span class="shortcut-icon">PT</span><span><strong>Points desk</strong><small>Score and review every submission</small></span><i aria-hidden="true">→</i></a>
+          <a href="{% url 'admin:aakarapp_task_changelist' %}"><span class="shortcut-icon">TK</span><span><strong>Task manager</strong><small>Publish briefs, points and deadlines</small></span><i aria-hidden="true">→</i></a>
+          <a href="{% url 'admin:aakarapp_taskzero_changelist' %}"><span class="shortcut-icon">CR</span><span><strong>Participant directory</strong><small>Search CR IDs, colleges and contact details</small></span><i aria-hidden="true">→</i></a>
+          <a href="/cr/leaderboard" target="_blank" rel="noopener"><span class="shortcut-icon">LB</span><span><strong>Public leaderboard</strong><small>Confirm how awarded points appear</small></span><i aria-hidden="true">↗</i></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="ops-lower-grid">
+      <article class="ops-panel ops-models">
+        <header><div><span class="ops-panel-label">All records</span><h2>Administration</h2></div></header>
+        {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+      </article>
+
+      <aside class="ops-panel ops-activity" aria-labelledby="activity-title">
+        <header><div><span class="ops-panel-label">Audit trail</span><h2 id="activity-title">Recent activity</h2></div></header>
+        {% get_admin_log 6 as admin_log for_user user %}
+        {% if admin_log %}
+          <ul class="ops-activity-list">
+            {% for entry in admin_log %}
+              <li><span class="activity-dot" aria-hidden="true"></span><div>{% if entry.is_deletion or not entry.get_admin_url %}{{ entry.object_repr }}{% else %}<a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>{% endif %}<small>{% if entry.content_type %}{{ entry.content_type.name|capfirst }} · {% endif %}{{ entry.action_time|timesince }} ago</small></div></li>
+            {% endfor %}
+          </ul>
+        {% else %}<p class="ops-empty">Your changes will appear here.</p>{% endif %}
+      </aside>
+    </section>
+  </div>
+{% endblock %}
